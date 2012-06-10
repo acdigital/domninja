@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>DOM Ninja</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Frontend developer bookmarklet" />
+		<meta name="robots" content="all" />
+		<link type="text/css" href="styles/index.css" media="all" rel="stylesheet" />
+	</head>
+	<body>
+		<a class="box_drag" href="javascript:
+			(function ()
+			{
+				/* load jquery */
+
+				if (typeof jQuery == 'undefined')
+				{
+					var loadJQ = document.createElement('script');
+					loadJQ.type = 'text/javascript';
+					loadJQ.onload = loadDN;
+					loadJQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+					document.body.appendChild(loadJQ);
+				}
+				else
+				{
+					loadDN();
+				}
+
+				/* load dom ninja */
+
+				function loadDN()
+				{
+					/* load script */
+
+					var loadDNScript = document.createElement('script');
+					loadDNScript.type = 'text/javascript';
+					loadDNScript.src = 'http://domninja.com/scripts/dn.js';
+					document.body.appendChild(loadDNScript);
+
+					/* load style */
+
+					var loadDNStyle = document.createElement('link');
+					loadDNStyle.type = 'text/css';
+					loadDNStyle.href = 'http://domninja.com/styles/dn.css';
+					loadDNStyle.media = 'all';
+					loadDNStyle.rel = 'stylesheet';
+					document.getElementsByTagName('head')[0].appendChild(loadDNStyle);
+				}
+			}());
+			" title="Frontend developer bookmarklet">Drag DOM Ninja to your bookmarks bar
+		</a>
+		<a class="box_source" href="https://github.com/redaxmedia/domninja">Get the DOM Ninja source</a>
+		<script type="text/javascript" src="http://google-analytics.com/ga.js"></script>
+		<script type="text/javascript">
+		if (typeof _gat == 'object')
+		{
+			var tracker = _gat._getTracker('UA-16122280-7');
+
+			tracker._setDomainName('domninja.com');
+			tracker._initData();
+			tracker._trackPageview();
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<ifmodule mod_deflate.c>
+	<filesmatch \.(css|html|js|php|xml)$>
+		setoutputfilter deflate
+	</filesmatch>
+</ifmodule>
+<ifmodule mod_security.c>
+	secfilterengine off
+	secfilterscanpost off
+</ifmodule>
+<ifmodule mod_headers.c>
+	<filesmatch \.(gif|jpg|png)$>
+		header set cache-control max-age=2419200
+	</filesmatch>
+	<filesmatch \.(css|js|swf)$>
+		header set cache-control max-age=604800
+	</filesmatch>
+	<filesmatch \.(html|xml)$>
+		header set cache-control max-age=600
+	</filesmatch>
+</ifmodule>
+fileetag none
