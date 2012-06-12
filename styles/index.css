@@ -37,26 +37,41 @@ table
 	border-spacing: 0;
 }
 
-/* box source */
+/* general */
 
-.box_source
+body
 {
-	color: #bbb;
-	display: block;
-	font: 11px arial;
-	margin: 0 auto;
-	text-align: center;
-	width: 250px;
+	font: 0.75em arial;
 }
 
-.box_source:hover
+.wrapper
+{
+	margin: 100px auto;
+	width: 550px;
+}
+
+/* box content */
+
+.box_content
+{
+	font-size: 0.875em;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.box_content, .box_content a
+{
+	color: #aaa;
+}
+
+.box_content a:hover
 {
 	color: #777;
 }
 
 /* box drag */
 
-.box_drag
+.link_drag
 {
 	moz-border-radius: 10px;
 	webkit-border-radius: 10px;
@@ -73,16 +88,15 @@ table
 	display: block;
 	font: bold 16px 'trebuchet ms', arial;
 	letter-spacing: 4px;
-	margin: 100px auto 20px;
+	margin: 20px auto;
 	padding: 14px;
 	text-align: center;
 	text-decoration: none;
 	text-shadow: 0 1px #999;
 	text-transform: uppercase;
-	width: 500px;
 }
 
-.box_drag:hover
+.link_drag:hover
 {
 	background: #00ff00;
 	background: linear-gradient(top, #00ff00, #009900);

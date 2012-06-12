@@ -1,10 +1,8 @@
-jQuery.noConflict();
-
-$(function ()
+jQuery(function ()
 {
-	var body = $('body'),
-		head = $('head'),
-		html = $('html'),
+	var body = jQuery('body'),
+		head = jQuery('head'),
+		html = jQuery('html'),
 		code = html.html(),
 		score = 0, scoreTotal = 0, scoreClass,
 		id, panel, panelMessage, panelListing, panelListingClass,
@@ -12,7 +10,7 @@ $(function ()
 		{
 			documentTags:
 			{
-				elements: $('*').not('div.js_dn_panel, div.js_dn_panel *, link.[href="http://domninja.com/styles/dn.css"], script.[src="http://domninja.com/scripts/dn.js"]'),
+				elements: jQuery('*').not('div.js_dn_panel, div.js_dn_panel *, link.[href="http://domninja.com/styles/dn.css"], script.[src="http://domninja.com/scripts/dn.js"]'),
 				description: 'Document tags',
 				amountNinja: 750,
 				amountTrainee: 1500,
@@ -265,7 +263,7 @@ $(function ()
 
 	dn.hasIDTags.elements.each(function ()
 	{
-		id = $('[id=' + this.id + ']');
+		id = jQuery('[id=' + this.id + ']');
 
 		if (id.length > 1 && id[0] == this)
 		{
@@ -324,11 +322,11 @@ $(function ()
 
 	/* remove old panel */
 
-	$('div.js_dn_panel').remove();
+	jQuery('div.js_dn_panel').remove();
 
 	/* append new panel */
 
-	panel = $('<div></div>').addClass('js_dn_panel dn_panel dn_panel_left').appendTo(body).hide();
+	panel = jQuery('<div></div>').addClass('js_dn_panel dn_panel dn_panel_left').appendTo(body).hide();
 
 	/* collect panel listing */
 
@@ -412,9 +410,9 @@ $(function ()
 
 	panel.children('div.js_dn_title_panel').hover(function ()
 	{
-		$(this).text('Close');
+		jQuery(this).text('Close');
 	}, function () {
-		$(this).text('DOM Ninja');
+		jQuery(this).text('DOM Ninja');
 	});
 
 	/* remove dom ninja on click */
@@ -422,7 +420,7 @@ $(function ()
 	panel.children('div.js_dn_title_panel').click(function ()
 	{
 		panel.remove();
-		$('link.[href="http://domninja.com/styles/dn.css"], script.[src="http://domninja.com/scripts/dn.js"]').remove();
+		jQuery('link.[href="http://domninja.com/styles/dn.css"], script.[src="http://domninja.com/scripts/dn.js"]').remove();
 	});
 
 	/* output dn object to console */
