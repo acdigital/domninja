@@ -5,7 +5,8 @@ jQuery(function ()
 		html = jQuery('html'),
 		code = html.html(),
 		score = 0, scoreTotal = 0, scoreClass,
-		id, panel, panelMessage, panelListing, panelListingClass,
+		styles, styleRules = 0, styleRulesAmount = 0,
+		id, value, i, panel, panelMessage, panelListing, panelListingClass,
 		dn =
 		{
 			documentTags:
@@ -40,7 +41,7 @@ jQuery(function ()
 				amountTrainee: 5,
 				amountNovice: 10
 			},
- 			embedTags:
+			embedTags:
 			{
 				elements: body.find('embed'),
 				description: 'Embed tags',
@@ -235,13 +236,16 @@ jQuery(function ()
 
 	for (value in dn)
 	{
-		if (dn[value].elements)
+		if (dn.hasOwnProperty(value))
 		{
-			dn[value].amount = dn[value].elements.length;
-		}
-		else
-		{
-			dn[value].amount = 0;
+			if (dn[value].elements)
+			{
+				dn[value].amount = dn[value].elements.length;
+			}
+			else
+			{
+				dn[value].amount = 0;
+			}
 		}
 	}
 
@@ -265,7 +269,7 @@ jQuery(function ()
 	{
 		id = jQuery('[id=' + this.id + ']');
 
-		if (id.length > 1 && id[0] == this)
+		if (id.length > 1 && id[0] === this)
 		{
 			dn.duplicatedIDTags.elements.push(id);
 			dn.duplicatedIDTags.amount += id.length;
@@ -286,9 +290,7 @@ jQuery(function ()
 	/* port style rules to viral script hook */
 
 	/***
-	var styles = document.styleSheets,
-		stylesAmount = 0,
-		styleRulesAmount = 0;
+	styles = document.styleSheets;
 
 	if (styles)
 	{
@@ -306,7 +308,7 @@ jQuery(function ()
 	}
 	***/
 
-	viralScriptHook.text += 'var styles=document.styleSheets,stylesAmount=0,styleRulesAmount=0;if(styles){stylesAmount=styles.length;}if(stylesAmount){for(i=0;i<stylesAmount;i++){if(styles[i]){styleRulesAmount+=styles[i].cssRules.length;}}}';
+	viralScriptHook.text += 'styles=document.styleSheets;if(styles){stylesAmount=styles.length;}if(stylesAmount){for(i=0;i<stylesAmount;i++){if(styles[i]){styleRulesAmount+=styles[i].cssRules.length;}}}';
 
 	/* append viral script hook */
 
@@ -334,31 +336,34 @@ jQuery(function ()
 	panelListing += '<ul class="js_dn_box_panel dn_box_panel">';
 	for (value in dn)
 	{
-		scoreTotal++;
-		if (dn[value].amount == 0)
+		if (dn.hasOwnProperty(value))
 		{
-			score++;
-			panelListingClass = 'dn_amount_zero';
+			scoreTotal++;
+			if (dn[value].amount === 0)
+			{
+				score++;
+				panelListingClass = 'dn_amount_zero';
+			}
+			else if (dn[value].amount <= dn[value].amountNinja)
+			{
+				score++;
+				panelListingClass = 'dn_amount_ninja';
+			}
+			else if (dn[value].amount <= dn[value].amountTrainee)
+			{
+				panelListingClass = 'dn_amount_trainee';
+			}
+			else if (dn[value].amount >= dn[value].amountNovice)
+			{
+				score--;
+				panelListingClass = 'dn_amount_novice';
+			}
+			else
+			{
+				panelListingClass = 'dn_amount';
+			}
+			panelListing += '<li class=' + panelListingClass +'>' + dn[value].description + ': ' + dn[value].amount + '</li>';
 		}
-		else if (dn[value].amount <= dn[value].amountNinja)
-		{
-			score++;
-			panelListingClass = 'dn_amount_ninja';
-		}
-		else if (dn[value].amount <= dn[value].amountTrainee)
-		{
-			panelListingClass = 'dn_amount_trainee';
-		}
-		else if (dn[value].amount >= dn[value].amountNovice)
-		{
-			score--;
-			panelListingClass = 'dn_amount_novice';
-		}
-		else
-		{
-			panelListingClass = 'dn_amount';
-		}
-		panelListing += '<li class=' + panelListingClass +'>' + dn[value].description + ': ' + dn[value].amount + '</li>';
 	}
 	panelListing += '</ul>';
 
@@ -427,6 +432,6 @@ jQuery(function ()
 
 	if (window.console)
 	{
-		console.log(dn);
+		window.console.log(dn);
 	}
 });
