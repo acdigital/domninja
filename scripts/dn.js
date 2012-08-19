@@ -11,7 +11,7 @@ jQuery(function ()
 		{
 			documentTags:
 			{
-				elements: jQuery('*').not('div.js_dn_panel, div.js_dn_panel *, link.[href="http://domninja.com/styles/dn.css"], script.[src="http://domninja.com/scripts/dn.js"]'),
+				elements: jQuery('*').not('div.js_dn_panel, div.js_dn_panel *, link[href="http://domninja.com/styles/dn.css"], script[src="http://domninja.com/scripts/dn.js"]'),
 				description: 'Document tags',
 				amountNinja: 750,
 				amountTrainee: 1500,
@@ -51,7 +51,7 @@ jQuery(function ()
 			},
 			scaledImgTags:
 			{
-				elements: body.find('img.[width], img.[height]'),
+				elements: body.find('img[width], img[height]'),
 				description: 'Scaled img tags',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -75,7 +75,7 @@ jQuery(function ()
 			},
 			emptyTags:
 			{
-				elements: html.find(':empty').not('area, base, basefont, br, hr, iframe.[src], img.[src], input, link.[rel], meta, param, script.[src]'),
+				elements: html.find(':empty').not('area, base, basefont, br, hr, iframe[src], img[src], input, link[rel], meta, param, script[src]'),
 				description: 'Empty tags',
 				amountNinja: 50,
 				amountTrainee: 100,
@@ -83,7 +83,7 @@ jQuery(function ()
 			},
 			emptyAltAttributes:
 			{
-				elements: body.find('img.[alt=""]'),
+				elements: body.find('img[alt=""]'),
 				description: 'Empty alt attributes',
 				amountNinja: 0,
 				amountTrainee: 10,
@@ -91,7 +91,7 @@ jQuery(function ()
 			},
 			emptyHrefAttributes:
 			{
-				elements: body.find('a.[href=""]'),
+				elements: body.find('a[href=""]'),
 				description: 'Empty href attributes',
 				amountNinja: 0,
 				amountTrainee: 10,
@@ -99,7 +99,7 @@ jQuery(function ()
 			},
 			emptySrcAttributes:
 			{
-				elements: body.find('iframe.[src=""], img.[src=""]'),
+				elements: body.find('iframe[src=""], img[src=""]'),
 				description: 'Empty src attributes',
 				amountNinja: 0,
 				amountTrainee: 5,
@@ -171,7 +171,7 @@ jQuery(function ()
 			},
 			styleExternals:
 			{
-				elements: html.find('link.[type="text/css"].[rel="stylesheet"]').not('link.[href="http://domninja.com/styles/dn.css"]'),
+				elements: html.find('link[type="text/css"][rel="stylesheet"]').not('link[href="http://domninja.com/styles/dn.css"]'),
 				description: 'External style files',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -203,7 +203,7 @@ jQuery(function ()
 			},
 			scriptExternals:
 			{
-				elements: head.find('script.[type="text/javascript"].[src]').not('script.[src="http://domninja.com/scripts/dn.js"]'),
+				elements: head.find('script[type="text/javascript"][src]').not('script[src="http://domninja.com/scripts/dn.js"]'),
 				description: 'External script files',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -425,7 +425,7 @@ jQuery(function ()
 	panel.children('div.js_dn_title_panel').click(function ()
 	{
 		panel.remove();
-		jQuery('link.[href="http://domninja.com/styles/dn.css"], script.[src="http://domninja.com/scripts/dn.js"]').remove();
+		jQuery('link[href="http://domninja.com/styles/dn.css"], script[src="http://domninja.com/scripts/dn.js"]').remove();
 	});
 
 	/* output dn object to console */
