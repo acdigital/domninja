@@ -6,12 +6,12 @@ jQuery(function ()
 		code = html.html(),
 		score = 0, scoreTotal = 0, scoreClass,
 		styles, styleRules = 0, styleRulesAmount = 0,
-		id, value, i, panel, panelMessage, panelListing, panelListingClass,
+		id, value, i, panel, panelMessage, panelListing, panelClass,
 		dn =
 		{
 			documentTags:
 			{
-				elements: jQuery('*').not('div.js_dn_panel, div.js_dn_panel *, link[href="http://domninja.com/styles/dn.css"], script[src="http://domninja.com/scripts/dn.js"]'),
+				elements: jQuery('*').not('div.js_dn_panel, div.js_dn_panel *, link[href$="dn.css"], script[src$="dn.js"]'),
 				description: 'Document tags',
 				amountNinja: 750,
 				amountTrainee: 1500,
@@ -171,7 +171,7 @@ jQuery(function ()
 			},
 			styleExternals:
 			{
-				elements: html.find('link[type="text/css"][rel="stylesheet"]').not('link[href="http://domninja.com/styles/dn.css"]'),
+				elements: html.find('link[type="text/css"][rel="stylesheet"]').not('link[href$="dn.css"]'),
 				description: 'External style files',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -203,7 +203,7 @@ jQuery(function ()
 			},
 			scriptExternals:
 			{
-				elements: head.find('script[type="text/javascript"][src]').not('script[src="http://domninja.com/scripts/dn.js"]'),
+				elements: head.find('script[type="text/javascript"][src]').not('script[src$="dn.js"]'),
 				description: 'External script files',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -226,11 +226,6 @@ jQuery(function ()
 				amountNovice: 100
 			}
 		};
-
-	/* viral script hook */
-
-	var viralScriptHook = document.createElement('script');
-		viralScriptHook.type = 'text/javascript';
 
 	/* calculate amounts of dn objects */
 
@@ -260,7 +255,7 @@ jQuery(function ()
 
 	if (dn.visibleTags.amount && dn.hiddenTags.amount)
 	{
-		dn.displayRatio.amount = Math.round(dn.hiddenTags.amount / dn.visibleTags.amount * 100);
+		dn.displayRatio.amount = math.round(dn.hiddenTags.amount / dn.visibleTags.amount * 100);
 	}
 
 	/* calculate duplicated id */
@@ -287,40 +282,20 @@ jQuery(function ()
 		}
 	}
 
-	/* port style rules to viral script hook */
+	/* viral script hook */
 
-	/***
-	styles = document.styleSheets;
+	var viralScriptHook = document.createElement('script');
+	viralScriptHook.type = 'text/javascript';
+	viralScriptHook.text = 'styles=document.styleSheets;if(styles){stylesAmount=styles.length;}if(stylesAmount){for(i=0;i<stylesAmount;i++){if(styles[i]){styleRulesAmount+=styles[i].cssRules.length;}}}';
 
-	if (styles)
-	{
-		stylesAmount = styles.length;
-	}
-	if (stylesAmount)
-	{
-		for (i = 0; i < stylesAmount; i++)
-		{
-			if (styles[i])
-			{
-				styleRulesAmount += styles[i].cssRules.length;
-			}
-		}
-	}
-	***/
-
-	viralScriptHook.text += 'styles=document.styleSheets;if(styles){stylesAmount=styles.length;}if(stylesAmount){for(i=0;i<stylesAmount;i++){if(styles[i]){styleRulesAmount+=styles[i].cssRules.length;}}}';
-
-	/* append viral script hook */
+	/* append and remove viral script hook */
 
 	document.body.appendChild(viralScriptHook);
+	document.body.removeChild(viralScriptHook);
 
 	/* capture from viral script hook */
 
 	dn.styleRules.amount = styleRulesAmount;
-
-	/* remove viral script hook */
-
-	document.body.removeChild(viralScriptHook);
 
 	/* remove old panel */
 
@@ -328,12 +303,11 @@ jQuery(function ()
 
 	/* append new panel */
 
-	panel = jQuery('<div></div>').addClass('js_dn_panel dn_panel dn_panel_left').appendTo(body).hide();
+	panel = jQuery('<div class="js_dn_panel dn_panel dn_panel_left"></div>').appendTo(body).hide();
 
 	/* collect panel listing */
 
-	panelListing = '<div class="js_dn_title_panel dn_title_panel">DOM Ninja</div>';
-	panelListing += '<ul class="js_dn_box_panel dn_box_panel">';
+	panelListing = '<div class="js_dn_title_panel dn_title_panel">DOM Ninja</div><ul class="js_dn_box_panel dn_box_panel">';
 	for (value in dn)
 	{
 		if (dn.hasOwnProperty(value))
@@ -342,27 +316,27 @@ jQuery(function ()
 			if (dn[value].amount === 0)
 			{
 				score++;
-				panelListingClass = 'dn_amount_zero';
+				panelClass = 'dn_amount_zero';
 			}
 			else if (dn[value].amount <= dn[value].amountNinja)
 			{
 				score++;
-				panelListingClass = 'dn_amount_ninja';
+				panelClass = 'dn_amount_ninja';
 			}
 			else if (dn[value].amount <= dn[value].amountTrainee)
 			{
-				panelListingClass = 'dn_amount_trainee';
+				panelClass = 'dn_amount_trainee';
 			}
 			else if (dn[value].amount >= dn[value].amountNovice)
 			{
 				score--;
-				panelListingClass = 'dn_amount_novice';
+				panelClass = 'dn_amount_novice';
 			}
 			else
 			{
-				panelListingClass = 'dn_amount';
+				panelClass = 'dn_amount';
 			}
-			panelListing += '<li class=' + panelListingClass +'>' + dn[value].description + ': ' + dn[value].amount + '</li>';
+			panelListing += '<li class=' + panelClass +'>' + dn[value].description + ': ' + dn[value].amount + '</li>';
 		}
 	}
 	panelListing += '</ul>';
@@ -425,7 +399,7 @@ jQuery(function ()
 	panel.children('div.js_dn_title_panel').click(function ()
 	{
 		panel.remove();
-		jQuery('link[href="http://domninja.com/styles/dn.css"], script[src="http://domninja.com/scripts/dn.js"]').remove();
+		jQuery('link[href$="dn.css"], script[src$="dn.js"]').remove();
 	});
 
 	/* output dn object to console */
