@@ -5,7 +5,6 @@ jQuery(function ()
 		html = jQuery('html'),
 		code = html.html(),
 		score = 0, scoreTotal = 0, scoreClass,
-		styles, styleRules = 0, styleRulesAmount = 0,
 		id, value, i, panel, panelMessage, panelListing, panelClass,
 		dn =
 		{
@@ -16,6 +15,14 @@ jQuery(function ()
 				amountNinja: 750,
 				amountTrainee: 1500,
 				amountNovice: 2500
+			},
+			httpRequests:
+			{
+				elements: jQuery('iframe[src], img[src], link[href], script[src], source[src], object[data]').not('link[href$="dn.css"], script[src$="dn.js"]'),
+				description: 'HTTP requests',
+				amountNinja: 10,
+				amountTrainee: 20,
+				amountNovice: 50
 			},
 			deprecatedTags:
 			{
@@ -185,18 +192,10 @@ jQuery(function ()
 				amountTrainee: 10,
 				amountNovice: 20
 			},
-			styleRules:
-			{
-				elements: '',
-				description: 'Style rules',
-				amountNinja: 500,
-				amountTrainee: 1000,
-				amountNovice: 2000
-			},
 			scriptTagsInHead:
 			{
 				elements: head.find('script'),
-				description: 'Script tag in head',
+				description: 'Script tags in head',
 				amountNinja: 5,
 				amountTrainee: 10,
 				amountNovice: 20
@@ -255,7 +254,7 @@ jQuery(function ()
 
 	if (dn.visibleTags.amount && dn.hiddenTags.amount)
 	{
-		dn.displayRatio.amount = math.round(dn.hiddenTags.amount / dn.visibleTags.amount * 100);
+		dn.displayRatio.amount = Math.round(dn.hiddenTags.amount / dn.visibleTags.amount * 100);
 	}
 
 	/* calculate duplicated id */
@@ -281,21 +280,6 @@ jQuery(function ()
 			dn.scriptGlobals.amount++;
 		}
 	}
-
-	/* viral script hook */
-
-	var viralScriptHook = document.createElement('script');
-	viralScriptHook.type = 'text/javascript';
-	viralScriptHook.text = 'styles=document.styleSheets;if(styles){stylesAmount=styles.length;}if(stylesAmount){for(i=0;i<stylesAmount;i++){if(styles[i]){styleRulesAmount+=styles[i].cssRules.length;}}}';
-
-	/* append and remove viral script hook */
-
-	document.body.appendChild(viralScriptHook);
-	document.body.removeChild(viralScriptHook);
-
-	/* capture from viral script hook */
-
-	dn.styleRules.amount = styleRulesAmount;
 
 	/* remove old panel */
 
@@ -336,7 +320,7 @@ jQuery(function ()
 			{
 				panelClass = 'dn_amount';
 			}
-			panelListing += '<li class=' + panelClass +'>' + dn[value].description + ': ' + dn[value].amount + '</li>';
+			panelListing += '<li class=' + panelClass +' title="Ninja: ' + dn[value].amountNinja + ' | Trainee: ' + dn[value].amountTrainee + ' | Novice: ' + dn[value].amountNovice + '">' + dn[value].description + ': ' + dn[value].amount + '</li>';
 		}
 	}
 	panelListing += '</ul>';
