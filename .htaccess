@@ -7,6 +7,15 @@
 	secfilterengine off
 	secfilterscanpost off
 </ifmodule>
+<ifmodule mod_rewrite.c>
+	rewriteengine on
+	rewritecond %{https} off
+	rewritecond %{http_host} ^www\.(.*)$ [nc]
+	rewriterule ^(.*)$ http://%1/$1 [r=301,l]
+	rewritecond %{https} on
+	rewritecond %{http_host} ^www\.(.*)$ [nc]
+	rewriterule ^(.*)$ https://%1/$1 [r=301,l]
+</ifmodule>
 <ifmodule mod_headers.c>
 	<filesmatch \.(gif|jpg|png)$>
 		header set cache-control max-age=2419200
