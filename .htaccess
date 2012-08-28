@@ -15,6 +15,8 @@
 	rewritecond %{https} on
 	rewritecond %{http_host} ^www\.(.*)$ [nc]
 	rewriterule ^(.*)$ https://%1/$1 [r=301,l]
+	rewritecond %{request_filename} !-d
+	rewriterule ^(.*)/$ /$1 [r=301,l]
 </ifmodule>
 <ifmodule mod_headers.c>
 	<filesmatch \.(gif|jpg|png)$>
