@@ -291,7 +291,7 @@ jQuery(function ()
 
 	/* collect panel listing */
 
-	panelListing = '<div class="js_dn_title_panel dn_title_panel">DOM Ninja</div><ul class="js_dn_box_panel dn_box_panel">';
+	panelListing = '<h1 class="js_dn_title_panel dn_title_panel">DOM Ninja</h1><ul class="js_dn_list_panel dn_list_panel">';
 	for (value in dn)
 	{
 		if (dn.hasOwnProperty(value))
@@ -364,14 +364,14 @@ jQuery(function ()
 
 	/* switch panel position on click */
 
-	panel.children('ul.js_dn_box_panel').click(function ()
+	panel.children('ul.js_dn_list_panel').click(function ()
 	{
 		panel.hide().toggleClass('dn_panel_left dn_panel_right').fadeIn(500);
 	});
 
 	/* change panel title on hover */
 
-	panel.children('div.js_dn_title_panel').hover(function ()
+	panel.children('h1.js_dn_title_panel').hover(function ()
 	{
 		jQuery(this).text('Close');
 	}, function () {
@@ -380,7 +380,7 @@ jQuery(function ()
 
 	/* remove dom ninja on click */
 
-	panel.children('div.js_dn_title_panel').click(function ()
+	panel.children('h1.js_dn_title_panel').click(function ()
 	{
 		panel.remove();
 		jQuery('link[href$="dn.css"], script[src$="dn.js"]').remove();
