@@ -6,7 +6,7 @@
 		<meta name="description" content="Frontend developer bookmarklet" />
 		<meta name="robots" content="all" />
 		<meta name="google-site-verification" content="zDHEx95xKzJC5nfDypXvF2D-DbSD1MIEmhpycnrds_s" />
-		<link type="text/css" href="styles/index.css" media="all" rel="stylesheet" />
+		<link type="text/css" href="styles/index_min.css" media="all" rel="stylesheet" />
 	</head>
 	<body class="wrapper">
 		<div class="box_content">
@@ -38,14 +38,14 @@
 
 					var loadDNScript = document.createElement('script');
 					loadDNScript.type = 'text/javascript';
-					loadDNScript.src = 'http://domninja.com/scripts/dn.js';
+					loadDNScript.src = 'http://domninja.com/scripts/dn_min.js';
 					document.body.appendChild(loadDNScript);
 
 					/* load style */
 
 					var loadDNStyle = document.createElement('link');
 					loadDNStyle.type = 'text/css';
-					loadDNStyle.href = 'http://domninja.com/styles/dn.css';
+					loadDNStyle.href = 'http://domninja.com/styles/dn_min.css';
 					loadDNStyle.media = 'all';
 					loadDNStyle.rel = 'stylesheet';
 					document.getElementsByTagName('head')[0].appendChild(loadDNStyle);

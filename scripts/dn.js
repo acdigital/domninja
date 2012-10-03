@@ -1,8 +1,8 @@
 jQuery(function ()
 {
-	var body = jQuery('body'),
-		head = jQuery('head'),
-		html = jQuery('html'),
+	var html = jQuery('html'),
+		body = html.find('body'),
+		head = body.find('head'),
 		code = html.html(),
 		score = 0, scoreTotal = 0, scoreClass,
 		id, value, i, panel, panelMessage, panelListing, panelClass,

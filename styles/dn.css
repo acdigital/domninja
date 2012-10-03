@@ -15,18 +15,6 @@
 	opacity: 1;
 }
 
-/* ugly panel reset */
-
-.dn_panel *
-{
-	border: 0;
-	list-style: none;
-	margin: 0;
-	outline: 0;
-	padding: 0;
-	text-align: left;
-}
-
 /* panel positions */
 
 .dn_panel_left
@@ -46,11 +34,12 @@
 	-moz-border-radius: 0 0 10px 10px;
 	-webkit-border-radius: 0 0 10px 10px;
 	background: #e5e5e5;
-	background: linear-gradient(top, #e5e5e5, #eee);
 	background: -moz-linear-gradient(top, #e5e5e5, #eee);
 	background: -ms-linear-gradient(top, #e5e5e5, #eee);
 	background: -o-linear-gradient(top, #e5e5e5, #eee);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#eee));
 	background: -webkit-linear-gradient(top, #e5e5e5, #eee);
+	background: linear-gradient(top, #e5e5e5, #eee);
 	border: 1px solid #d5d5d5;
 	border-top: 0;
 	border-radius: 0 0 10px 10px;
@@ -78,11 +67,12 @@
 .dn_box_panel li:hover
 {
 	background: #eee;
-	background: linear-gradient(top, #eee, #d5d5d5);
 	background: -moz-linear-gradient(top, #eee, #d5d5d5);
 	background: -ms-linear-gradient(top, #eee, #d5d5d5);
 	background: -o-linear-gradient(top, #eee, #d5d5d5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#d5d5d5));
 	background: -webkit-linear-gradient(top, #eee, #d5d5d5);
+	background: linear-gradient(top, #eee, #d5d5d5);
 }
 
 /* no hover for amount zero */
@@ -116,11 +106,12 @@
 .dn_box_panel .dn_amount_ninja:hover
 {
 	background: #00ff00;
-	background: linear-gradient(top, #009900, #00ff00);
 	background: -moz-linear-gradient(top, #009900, #00ff00);
 	background: -ms-linear-gradient(top, #009900, #00ff00);
 	background: -o-linear-gradient(top, #009900, #00ff00);
+	background: -webkit-gradient(linear, left top, left bottom, from(#009900), to(#00ff00));
 	background: -webkit-linear-gradient(top, #009900, #00ff00);
+	background: linear-gradient(top, #009900, #00ff00);
 	text-shadow: none;
 }
 
@@ -134,11 +125,12 @@
 .dn_box_panel .dn_amount_novice:hover
 {
 	background: #ff0000;
-	background: linear-gradient(top, #900000, #ff0000);
 	background: -moz-linear-gradient(top, #900000, #ff0000);
 	background: -ms-linear-gradient(top, #900000, #ff0000);
 	background: -o-linear-gradient(top, #900000, #ff0000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#900000), to(#ff0000));
 	background: -webkit-linear-gradient(top, #900000, #ff0000);
+	background: linear-gradient(top, #900000, #ff0000);
 	text-shadow: none;
 }
 
@@ -162,11 +154,12 @@
 	-moz-border-radius: 10px 10px 0 0;
 	-webkit-border-radius: 10px 10px 0 0;
 	background: #999;
-	background: linear-gradient(top, #999, #555);
 	background: -moz-linear-gradient(top, #999, #555);
 	background: -ms-linear-gradient(top, #999, #555);
 	background: -o-linear-gradient(top, #999, #555);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#555));
 	background: -webkit-linear-gradient(top, #999, #555);
+	background: linear-gradient(top, #999, #555);
 	border: 1px solid #555;
 	border-radius: 10px 10px 0 0;
 	font: bold 16px 'trebuchet ms', arial;
@@ -187,11 +180,12 @@
 .dn_score_ninja:hover .dn_title_panel
 {
 	background: #00ff00;
-	background: linear-gradient(top, #00ff00, #009900);
 	background: -moz-linear-gradient(top, #00ff00, #009900);
 	background: -ms-linear-gradient(top, #00ff00, #009900);
 	background: -o-linear-gradient(top, #00ff00, #009900);
+	background: -webkit-gradient(linear, left top, left bottom, from(#00ff00), to(#009900));
 	background: -webkit-linear-gradient(top, #00ff00, #009900);
+	background: linear-gradient(top, #00ff00, #009900);
 	border-color: #009900;
 	text-shadow: 0 1px #00ff00;
 }
@@ -206,11 +200,12 @@
 .dn_score_novice:hover .dn_title_panel
 {
 	background: #ff0000;
-	background: linear-gradient(top, #ff0000, #900000);
 	background: -moz-linear-gradient(top, #ff0000, #900000);
 	background: -ms-linear-gradient(top, #ff0000, #900000);
 	background: -o-linear-gradient(top, #ff0000, #900000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#900000));
 	background: -webkit-linear-gradient(top, #ff0000, #900000);
+	background: linear-gradient(top, #ff0000, #900000);
 	border-color: #900000;
 	text-shadow: 0 1px #ff0000;
 }
