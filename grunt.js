@@ -18,10 +18,11 @@ module.exports = function(grunt)
 
 	/* config grunt */
 
-	grunt.initConfig({
+	grunt.initConfig(
+	{
 		lint:
 		{
-			dn: ['scripts/*.js']
+			dn: ['scripts/dn.js']
 		},
 		watch:
 		{
@@ -56,8 +57,6 @@ module.exports = function(grunt)
 			},
 			globals:
 			{
-				_gaq: true,
-				_gat: true,
 				jQuery: true
 			}
 		},
@@ -65,7 +64,7 @@ module.exports = function(grunt)
 		{
 			dn:
 			{
-				src: ['styles/*.css'],
+				src: ['styles/dn.css'],
 				rules: grunt.cssRules
 			}
 		},
@@ -94,7 +93,7 @@ module.exports = function(grunt)
 		{
 			dn:
 			{
-				src: ['*.html', 'styles/*.css', 'scripts/*.js']
+				src: ['index.html', 'styles/dn.css', 'scripts/dn.js']
 			}
 		}
 	});
