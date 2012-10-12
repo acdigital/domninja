@@ -7,13 +7,8 @@ module.exports = function(grunt)
 		'adjoining-classes': false,
 		'box-model': false,
 		'box-sizing': false,
-		'compatible-vendor-prefixes': false,
 		'duplicate-background-images': false,
-		'fallback-colors': false,
-		'text-indent': false,
-		'unique-headings': false,
-		'outline-none': false,
-		'qualified-headings': false
+		'outline-none': false
 	};
 
 	/* config grunt */
@@ -33,7 +28,7 @@ module.exports = function(grunt)
 			},
 			styles:
 			{
-				files: ['<config:csslint.dn.src>'],
+				files: ['<config:csslint.dn.src>', '<config:csslint.index.src>'],
 				tasks: 'csslint'
 			}
 		},
@@ -47,12 +42,14 @@ module.exports = function(grunt)
 				eqeqeq: true,
 				eqnull: true,
 				es5: true,
-				immed: false,
 				latedef: true,
 				newcap: true,
 				noarg: true,
+				noempty: true,
 				node: true,
+				strict: true,
 				sub: true,
+				trailing: true,
 				undef: true
 			},
 			globals:
@@ -65,6 +62,11 @@ module.exports = function(grunt)
 			dn:
 			{
 				src: ['styles/dn.css'],
+				rules: grunt.cssRules
+			},
+			index:
+			{
+				src: ['styles/index.css'],
 				rules: grunt.cssRules
 			}
 		},
@@ -91,10 +93,7 @@ module.exports = function(grunt)
 		},
 		bom:
 		{
-			dn:
-			{
-				src: ['index.html', 'styles/dn.css', 'scripts/dn.js']
-			}
+			src: ['index.html', 'styles/*.css', 'scripts/*.js']
 		}
 	});
 
