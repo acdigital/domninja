@@ -1,6 +1,10 @@
 DOM Ninja
 =========
 
-Frontend developer bookmarklet.
+> Frontend developer bookmarklet.
 
-Get the code: [domninja.com](http://domninja.com)
+
+Get it
+------
+
+Get DOM Ninja on: [domninja.com](http://domninja.com)
