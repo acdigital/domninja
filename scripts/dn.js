@@ -16,7 +16,7 @@
 			{
 				documentTags:
 				{
-					elements: $('*').not('div.js_dn_panel, div.js_dn_panel *, link[href$="dn.css"], script[src$="dn.js"]'),
+					elements: $('*').not('div.js_dn_panel, div.js_dn_panel *, link[href$="dn_min.css"], script[src$="dn_min.js"]'),
 					description: 'Document tags',
 					amountNinja: 750,
 					amountTrainee: 1500,
@@ -24,7 +24,7 @@
 				},
 				httpRequests:
 				{
-					elements: $('iframe[src], img[src], link[href], script[src], source[src], object[data]').not('link[href$="dn.css"], script[src$="dn.js"]'),
+					elements: $('iframe[src], img[src], link[href], script[src], source[src], object[data]').not('link[href$="dn_min.css"], script[src$="dn_min.js"]'),
 					description: 'HTTP requests',
 					amountNinja: 10,
 					amountTrainee: 20,
@@ -184,7 +184,7 @@
 				},
 				styleExternals:
 				{
-					elements: html.find('link[type="text/css"][rel="stylesheet"]').not('link[href$="dn.css"]'),
+					elements: html.find('link[type="text/css"][rel="stylesheet"]').not('link[href$="dn_min.css"]'),
 					description: 'External style files',
 					amountNinja: 5,
 					amountTrainee: 10,
@@ -208,7 +208,7 @@
 				},
 				scriptExternals:
 				{
-					elements: head.find('script[type="text/javascript"][src]').not('script[src$="dn.js"]'),
+					elements: head.find('script[type="text/javascript"][src]').not('script[src$="dn_min.js"]'),
 					description: 'External script files',
 					amountNinja: 5,
 					amountTrainee: 10,
@@ -326,7 +326,7 @@
 				{
 					panelClass = 'dn_amount';
 				}
-				panelListing += '<li class=' + panelClass +' title="Ninja: ' + dn[value].amountNinja + ' | Trainee: ' + dn[value].amountTrainee + ' | Novice: ' + dn[value].amountNovice + '">' + dn[value].description + ': ' + dn[value].amount + '</li>';
+				panelListing += '<li class=' + panelClass + ' title="Ninja: ' + dn[value].amountNinja + ' | Trainee: ' + dn[value].amountTrainee + ' | Novice: ' + dn[value].amountNovice + '">' + dn[value].description + ': ' + dn[value].amount + '</li>';
 			}
 		}
 		panelListing += '</ul>';
@@ -360,7 +360,7 @@
 		/* modify panel */
 
 		panel.addClass(scoreClass);
-		panel.children('ul').append('<li class="dn_strong" title="Check the Javascript console for detailed information.">' + panelMessage + ' (' + score + '/' + scoreTotal +')</li>');
+		panel.children('ul').append('<li class="dn_strong" title="Check the Javascript console for detailed information.">' + panelMessage + ' (' + score + '/' + scoreTotal + ')</li>');
 
 		/* scroll to panel */
 
@@ -389,7 +389,7 @@
 		panel.children('h1.js_dn_title_panel').click(function ()
 		{
 			panel.remove();
-			$('link[href$="dn.css"], script[src$="dn.js"]').remove();
+			$('link[href$="dn_min.css"], script[src$="dn_min.js"]').remove();
 		});
 
 		/* output dn object to console */

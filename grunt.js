@@ -50,7 +50,8 @@ module.exports = function(grunt)
 				strict: true,
 				sub: true,
 				trailing: true,
-				undef: true
+				undef: true,
+				white: true
 			},
 			globals:
 			{
