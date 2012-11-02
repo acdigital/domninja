@@ -6,7 +6,7 @@
  * 3. dn list panel
  *    3.1 children elements
  *    3.2 first and last
- *    3.3 amount zero
+ *    3.3 amount fail
  *    3.4 amount ninja
  *    3.5 amount novice
  *    3.6 strong listing
@@ -103,14 +103,14 @@
 	border-bottom: 0;
 }
 
-/* @section 3.3 amount zero */
+/* @section 3.3 amount fail */
 
-.dn_list_panel .dn_amount_zero
+.dn_list_panel .dn_amount_fail
 {
 	color: #bbb;
 }
 
-.dn_list_panel .dn_amount_zero:hover
+.dn_list_panel .dn_amount_fail:hover
 {
 	background: none;
 }
