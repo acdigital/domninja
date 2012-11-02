@@ -411,12 +411,7 @@
 				if (dn.setup.hasOwnProperty(i))
 				{
 					output += '<li class="dn_amount_';
-					if (dn.setup[i].amount === 0)
-					{
-						dn.score++;
-						output += 'zero';
-					}
-					else if (dn.setup[i].amount <= dn.setup[i].amountNinja)
+					if (dn.setup[i].amount <= dn.setup[i].amountNinja)
 					{
 						dn.score++;
 						output += 'ninja';
@@ -432,7 +427,7 @@
 					}
 					else
 					{
-						output += 'none';
+						output += 'zero';
 					}
 					output += '" title="Ninja: ' + dn.setup[i].amountNinja + ' | Trainee: ' + dn.setup[i].amountTrainee + ' | Novice: ' + dn.setup[i].amountNovice + '">' + dn.setup[i].description + ': ' + dn.setup[i].amount + '</li>';
 				}
