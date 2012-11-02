@@ -17,9 +17,10 @@
 			{
 				/* load jquery */
 
-				if (typeof jQuery == 'undefined')
+				if (typeof jQuery === 'undefined')
 				{
 					var loadJQ = document.createElement('script');
+
 					loadJQ.type = 'text/javascript';
 					loadJQ.onload = loadDN;
 					loadJQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
@@ -37,6 +38,7 @@
 					/* load script */
 
 					var loadDNScript = document.createElement('script');
+
 					loadDNScript.type = 'text/javascript';
 					loadDNScript.src = 'http://domninja.com/scripts/dn_min.js';
 					document.body.appendChild(loadDNScript);
@@ -44,6 +46,7 @@
 					/* load style */
 
 					var loadDNStyle = document.createElement('link');
+
 					loadDNStyle.type = 'text/css';
 					loadDNStyle.href = 'http://domninja.com/styles/dn_min.css';
 					loadDNStyle.media = 'all';
@@ -56,16 +59,5 @@
 		<div class="box_content">
 			<a href="https://github.com/redaxmedia/domninja" title="DOM Ninja repository on Github">DOM Ninja repository on Github</a> | <a href="https://github.com/redaxmedia/domninja/zipball/master" title="Download the DOM Ninja source">Download the DOM Ninja source</a>
 		</div>
-		<script type="text/javascript" src="http://google-analytics.com/ga.js"></script>
-		<script type="text/javascript">
-		if (typeof _gat == 'object')
-		{
-			var tracker = _gat._getTracker('UA-16122280-7');
-
-			tracker._setDomainName('domninja.com');
-			tracker._initData();
-			tracker._trackPageview();
-		}
-		</script>
 	</body>
 </html>

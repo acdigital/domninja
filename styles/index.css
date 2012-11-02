@@ -1,4 +1,13 @@
-/* general */
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. box content
+ * 3. link drag
+ *    3.1 hover effect
+ */
+
+/* @section 1. general */
 
 body
 {
@@ -11,7 +20,7 @@ body
 	width: 550px;
 }
 
-/* box content */
+/* @section 2. box content */
 
 .box_content
 {
@@ -30,7 +39,7 @@ body
 	color: #777;
 }
 
-/* box drag */
+/* @section 3. link drag */
 
 .link_drag
 {
@@ -57,6 +66,8 @@ body
 	text-shadow: 0 1px #999;
 	text-transform: uppercase;
 }
+
+/* @section 3.1 hover effect */
 
 .link_drag:hover
 {

@@ -1,4 +1,21 @@
-/* reset */
+/**
+ * @tableofcontents
+ *
+ * 1. general reset
+ * 2. dn panel
+ * 3. dn list panel
+ *    3.1 children elements
+ *    3.2 first and last
+ *    3.3 amount zero
+ *    3.4 amount ninja
+ *    3.5 amount novice
+ *    3.6 strong listing
+ * 4. dn title panel
+ *    4.1 score ninja
+ *    4.2 score novice
+ */
+
+/* @section 1. general reset */
 
 .dn_title_panel, .dn_list_panel
 {
@@ -15,10 +32,11 @@
 	list-style: none;
 }
 
-/* panel */
+/* @section 2. dn panel */
 
 .dn_panel
 {
+	left: 50px;
 	max-width: 400px;
 	min-width: 250px;
 	overflow: hidden;
@@ -32,19 +50,7 @@
 	opacity: 1;
 }
 
-/* panel positions */
-
-.dn_panel_left
-{
-	left: 50px;
-}
-
-.dn_panel_right
-{
-	right: 50px;
-}
-
-/* panel list */
+/* @section 3. dn list panel */
 
 .dn_list_panel
 {
@@ -71,7 +77,7 @@
 	text-decoration: none;
 }
 
-/* panel item */
+/* @section 3.1 children elements */
 
 .dn_list_panel li
 {
@@ -92,14 +98,7 @@
 	background: linear-gradient(top, #eee, #d5d5d5);
 }
 
-/* no hover for amount zero */
-
-.dn_list_panel .dn_amount_zero:hover
-{
-	background: none;
-}
-
-/* first and last */
+/* @section 3.2 first and last */
 
 .dn_list_panel li:first-child
 {
@@ -111,14 +110,19 @@
 	border-bottom: 0;
 }
 
-/* amount zero */
+/* @section 3.3 amount zero */
 
 .dn_list_panel .dn_amount_zero
 {
 	color: #bbb;
 }
 
-/* amount ninja */
+.dn_list_panel .dn_amount_zero:hover
+{
+	background: none;
+}
+
+/* @section 3.4 amount ninja */
 
 .dn_list_panel .dn_amount_ninja:hover
 {
@@ -137,7 +141,7 @@
 	color: #009900;
 }
 
-/* amount novice */
+/* @section 3.5 amount novice */
 
 .dn_list_panel .dn_amount_novice:hover
 {
@@ -156,7 +160,7 @@
 	color: #900000;
 }
 
-/* strong listing */
+/* @section 3.6 strong listing */
 
 .dn_list_panel .dn_strong
 {
@@ -164,7 +168,7 @@
 	padding: 4px 10px;
 }
 
-/* panel title */
+/* @section 4. dn title panel */
 
 .dn_title_panel
 {
@@ -192,7 +196,7 @@
 	color: #555;
 }
 
-/* score ninja */
+/* @section 4.1 score ninja */
 
 .dn_score_ninja:hover .dn_title_panel
 {
@@ -212,7 +216,7 @@
 	color: #009900;
 }
 
-/* score novice */
+/* @section 4.2 score novice */
 
 .dn_score_novice:hover .dn_title_panel
 {

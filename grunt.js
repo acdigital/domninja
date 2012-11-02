@@ -95,6 +95,14 @@ module.exports = function(grunt)
 		bom:
 		{
 			src: ['index.html', 'styles/*.css', 'scripts/*.js']
+		},
+		shell:
+		{
+			toc:
+			{
+				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles',
+				stdout: true
+			}
 		}
 	});
 
@@ -102,9 +110,11 @@ module.exports = function(grunt)
 
 	grunt.loadNpmTasks('grunt-css');
 	grunt.loadNpmTasks('grunt-bom');
+	grunt.loadNpmTasks('grunt-shell');
 
 	/* register tasks */
 
 	grunt.registerTask('default', 'lint');
+	grunt.registerTask('toc', 'shell:toc');
 	grunt.registerTask('deploy', 'min cssmin');
 };
