@@ -373,11 +373,11 @@
 			dn.panel.title = $('<h1 class="js_dn_title_panel dn_title_panel">' + dn.wording.title + '</h1>').appendTo(dn.panel.body);
 			dn.panel.list = $('<ul class="js_dn_list_panel dn_list_panel"></ul>').appendTo(dn.panel.body);
 
-			/* scroll to panel */
+			/* scroll top */
 
 			dn.html.add(dn.body).animate(
 			{
-				scrollTop: dn.panel.body.position.top
+				scrollTop: 0
 			}, 1000);
 
 			/* panel title click */
