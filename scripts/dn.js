@@ -427,7 +427,7 @@
 					}
 					else
 					{
-						dn.score - 2;
+						dn.score--;
 						output += 'fail';
 					}
 					output += '" title="Ninja: ' + dn.setup[i].amountNinja + ' | Trainee: ' + dn.setup[i].amountTrainee + ' | Novice: ' + dn.setup[i].amountNovice + '">' + dn.setup[i].description + ': ' + dn.setup[i].amount + '</li>';

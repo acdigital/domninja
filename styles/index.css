@@ -11,13 +11,13 @@
 
 body
 {
-	font: 0.625em 'trebuchet ms', arial;
+	font: 0.75em 'trebuchet ms', arial;
 }
 
 .wrapper
 {
 	margin: 100px auto;
-	width: 550px;
+	width: 520px;
 }
 
 /* @section 2. box content */
@@ -57,7 +57,7 @@ body
 	display: block;
 	font: bold 1.25em 'trebuchet ms', arial;
 	letter-spacing: 0.25em;
-	margin: 2em auto;
+	margin: 1em auto;
 	padding: 1em;
 	text-align: center;
 	text-decoration: none;
