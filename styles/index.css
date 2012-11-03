@@ -11,7 +11,7 @@
 
 body
 {
-	font: 11px arial;
+	font: 0.625em 'trebuchet ms', arial;
 }
 
 .wrapper
@@ -42,8 +42,8 @@ body
 
 .link_drag
 {
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
+	-moz-border-radius: 0.75em;
+	-webkit-border-radius: 0.75em;
 	background: #999;
 	background: -moz-linear-gradient(top, #999, #555);
 	background: -ms-linear-gradient(top, #999, #555);
@@ -52,13 +52,13 @@ body
 	background: -webkit-linear-gradient(top, #999, #555);
 	background: linear-gradient(top, #999, #555);
 	border: 1px solid #555;
-	border-radius: 8px;
+	border-radius: 0.75em;
 	cursor: move;
 	display: block;
-	font: bold 16px 'trebuchet ms', arial;
-	letter-spacing: 4px;
-	margin: 20px auto;
-	padding: 14px;
+	font: bold 1.25em 'trebuchet ms', arial;
+	letter-spacing: 0.25em;
+	margin: 2em auto;
+	padding: 1em;
 	text-align: center;
 	text-decoration: none;
 	text-shadow: 0 1px #999;

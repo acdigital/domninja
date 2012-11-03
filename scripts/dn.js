@@ -454,7 +454,7 @@
 
 			/* collect output */
 
-			output = '<li class="dn_strong" title="' + dn.wording.console + '">';
+			output = '<li class="dn_item_message" title="' + dn.wording.console + '">';
 			if (dn.score >= dn.total - 5)
 			{
 				dn.type = 'ninja';
@@ -467,7 +467,7 @@
 			{
 				dn.type = 'novice';
 			}
-			output += dn.wording.message[dn.type] + ' (' + dn.score + '/' + dn.total + ')</li>';
+			output += '<span class="dn_score">' + dn.score + '/' + dn.total + '</span><span class="dn_message">' + dn.wording.message[dn.type] + '</span></li>';
 
 			/* modify panel */
 

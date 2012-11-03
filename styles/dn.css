@@ -8,8 +8,9 @@
  *    3.2 first and last
  *    3.3 amount fail
  *    3.4 amount ninja
- *    3.5 amount novice
- *    3.6 strong listing
+ *    3.5 amount trainee
+ *    3.6 amount novice
+ *    3.7 item message
  * 4. dn title panel
  *    4.1 score ninja
  *    4.2 score novice
@@ -36,20 +37,21 @@
 
 .dn_panel
 {
+	font-size: small;
 	left: 50px;
-	max-width: 320px;
+	max-width: 250px;
 	min-width: 220px;
 	position: absolute;
 	top: 50px;
-	z-index: 100000;
+	z-index: 10000;
 }
 
 /* @section 3. dn list panel */
 
 .dn_list_panel
 {
-	-moz-border-radius: 0 0 8px 8px;
-	-webkit-border-radius: 0 0 8px 8px;
+	-moz-border-radius: 0 0 0.75em 0.75em;
+	-webkit-border-radius: 0 0 0.75em 0.75em;
 	background: #e5e5e5;
 	background: -moz-linear-gradient(top, #e5e5e5, #eee);
 	background: -ms-linear-gradient(top, #e5e5e5, #eee);
@@ -59,9 +61,9 @@
 	background: linear-gradient(top, #e5e5e5, #eee);
 	border: 1px solid #d5d5d5;
 	border-top: 0;
-	border-radius: 0 0 8px 8px;
-	font: 11px 'trebuchet ms', arial;
-	padding: 8px;
+	border-radius: 0 0 0.75em 0.75em;
+	font: 0.875em 'trebuchet ms', arial;
+	padding: 1em;
 }
 
 .dn_list_panel, .dn_list_panel a
@@ -76,19 +78,8 @@
 {
 	border-bottom: 1px solid #f5f5f5;
 	border-top: 1px solid #d5d5d5;
-	padding: 6px 8px;
+	padding: 0.5em 0.75em;
 	text-shadow: 0 1px #f5f5f5;
-}
-
-.dn_list_panel li:hover
-{
-	background: #eee;
-	background: -moz-linear-gradient(top, #eee, #d5d5d5);
-	background: -ms-linear-gradient(top, #eee, #d5d5d5);
-	background: -o-linear-gradient(top, #eee, #d5d5d5);
-	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#d5d5d5));
-	background: -webkit-linear-gradient(top, #eee, #d5d5d5);
-	background: linear-gradient(top, #eee, #d5d5d5);
 }
 
 /* @section 3.2 first and last */
@@ -110,11 +101,6 @@
 	color: #bbb;
 }
 
-.dn_list_panel .dn_amount_fail:hover
-{
-	background: none;
-}
-
 /* @section 3.4 amount ninja */
 
 .dn_list_panel .dn_amount_ninja:hover
@@ -134,7 +120,20 @@
 	color: #009900;
 }
 
-/* @section 3.5 amount novice */
+/* @section 3.5 amount trainee */
+
+.dn_list_panel .dn_amount_trainee:hover
+{
+	background: #eee;
+	background: -moz-linear-gradient(top, #eee, #d5d5d5);
+	background: -ms-linear-gradient(top, #eee, #d5d5d5);
+	background: -o-linear-gradient(top, #eee, #d5d5d5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#d5d5d5));
+	background: -webkit-linear-gradient(top, #eee, #d5d5d5);
+	background: linear-gradient(top, #eee, #d5d5d5);
+}
+
+/* @section 3.6 amount novice */
 
 .dn_list_panel .dn_amount_novice:hover
 {
@@ -153,19 +152,28 @@
 	color: #900000;
 }
 
-/* @section 3.6 strong listing */
+/* @section 3.7 item message */
 
-.dn_list_panel .dn_strong
+.dn_list_panel .dn_item_message
 {
-	font: bold 12px 'trebuchet ms', arial;
+	font: 1em 'trebuchet ms', arial;
+	text-align: center;
+}
+
+.dn_list_panel .dn_score
+{
+	display: block;
+	font: bold 2em 'trebuchet ms', arial;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 
 /* @section 4. dn title panel */
 
 .dn_title_panel
 {
-	-moz-border-radius: 8px 8px 0 0;
-	-webkit-border-radius: 8px 8px 0 0;
+	-moz-border-radius: 0.75em 0.75em 0 0;
+	-webkit-border-radius: 0.75em 0.75em 0 0;
 	background: #999;
 	background: -moz-linear-gradient(top, #999, #555);
 	background: -ms-linear-gradient(top, #999, #555);
@@ -174,11 +182,11 @@
 	background: -webkit-linear-gradient(top, #999, #555);
 	background: linear-gradient(top, #999, #555);
 	border: 1px solid #555;
-	border-radius: 8px 8px 0 0;
+	border-radius: 0.75em 0.75em 0 0;
 	cursor: pointer;
-	font: bold 16px 'trebuchet ms', arial;
-	letter-spacing: 4px;
-	padding: 14px;
+	font: bold 1.25em 'trebuchet ms', arial;
+	letter-spacing: 0.25em;
+	padding: 1em;
 	text-align: center;
 	text-shadow: 0 1px #999;
 	text-transform: uppercase;
