@@ -362,13 +362,20 @@
 		dn.destroyPanel = function ()
 		{
 			dn.body.find('div.js_dn_panel, link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]').remove();
-		}();
+		};
 
 		/* create panel */
 
 		dn.createPanel = function ()
 		{
 			dn.panel = dn.panel || {};
+			
+			/* destroy panel */
+
+			dn.destroyPanel();
+
+			/* append panel */
+
 			dn.panel.body = $('<div class="js_dn_panel dn_panel"></div>').appendTo(dn.body);
 			dn.panel.title = $('<h1 class="js_dn_title_panel dn_title_panel">' + dn.wording.title + '</h1>').appendTo(dn.panel.body);
 			dn.panel.list = $('<ul class="js_dn_list_panel dn_list_panel"></ul>').appendTo(dn.panel.body);
@@ -384,7 +391,7 @@
 
 			dn.panel.title.click(function ()
 			{
-				dn.body.find('div.js_dn_panel, link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]').remove();
+				dn.destroyPanel();
 			});
 
 			/* panel title hover */
