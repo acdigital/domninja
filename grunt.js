@@ -15,10 +15,6 @@ module.exports = function(grunt)
 
 	grunt.initConfig(
 	{
-		lint:
-		{
-			dn: ['scripts/dn.js']
-		},
 		watch:
 		{
 			scripts:
@@ -31,6 +27,10 @@ module.exports = function(grunt)
 				files: ['<config:csslint.dn.src>', '<config:csslint.index.src>'],
 				tasks: 'csslint'
 			}
+		},
+		lint:
+		{
+			dn: ['scripts/dn.js']
 		},
 		jshint:
 		{
