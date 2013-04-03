@@ -1,0 +1,22 @@
+{
+	"boss": true,
+	"browser": true,
+	"curly": true,
+	"eqeqeq": true,
+	"eqnull": true,
+	"es5": true,
+	"latedef": true,
+	"newcap": true,
+	"noarg": true,
+	"noempty": true,
+	"node": true,
+	"strict": true,
+	"sub": true,
+	"trailing": true,
+	"undef": true,
+	"white": true,
+	"predef":
+	[
+		"jQuery"
+	]
+}
