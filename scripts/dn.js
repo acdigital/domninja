@@ -57,7 +57,7 @@
 			{
 				elements: $('*').not('div.js_dn_panel, div.js_dn_panel *, link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]'),
 				description: 'Document tags',
-				amountNinja: 750,
+				amountNinja: 1000,
 				amountTrainee: 1500,
 				amountNovice: 2500
 			},
@@ -65,8 +65,8 @@
 			{
 				elements: $('iframe[src], img[src], link[href], script[src], source[src], object[data]').not('link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]'),
 				description: 'HTTP requests',
-				amountNinja: 10,
-				amountTrainee: 20,
+				amountNinja: 15,
+				amountTrainee: 25,
 				amountNovice: 50
 			},
 			deprecatedTags:
@@ -201,9 +201,9 @@
 			{
 				elements: dn.body.find('[id] > [id]'),
 				description: 'Tags with nested ID',
-				amountNinja: 5,
-				amountTrainee: 10,
-				amountNovice: 15
+				amountNinja: 10,
+				amountTrainee: 20,
+				amountNovice: 30
 			},
 			deepNestedTags:
 			{
@@ -321,12 +321,12 @@
 			dn.setup.hasIDTags.elements.each(function ()
 			{
 				var id = $('[id=' + this.id + ']'),
-					lenght = id.length;
+					length = id.length;
 
-				if (lenght > 1 && id[0] === this)
+				if (length > 1 && id[0] === this)
 				{
 					dn.setup.duplicatedIDTags.elements.push(id);
-					dn.setup.duplicatedIDTags.amount += lenght;
+					dn.setup.duplicatedIDTags.amount += length;
 				}
 			});
 		}();
