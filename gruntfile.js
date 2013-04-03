@@ -25,7 +25,8 @@ module.exports = function (grunt)
 			{
 				src: ['styles/index.css']
 			},
-			options: {
+			options:
+			{
 				csslintrc: '.csslintrc'
 			}
 		},
