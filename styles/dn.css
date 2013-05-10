@@ -38,11 +38,11 @@
 .dn_panel
 {
 	font-size: small;
-	left: 50px;
-	max-width: 250px;
-	min-width: 220px;
+	left: 2em;
+	max-width: 22em;
+	min-width: 18em;
 	position: absolute;
-	top: 50px;
+	top: 2em;
 	z-index: 10000;
 }
 
