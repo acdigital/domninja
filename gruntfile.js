@@ -61,7 +61,7 @@ module.exports = function (grunt)
 		{
 			toc:
 			{
-				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles'
+				command: 'php vendor/tocgen/tocgen.php scripts && php vendor/tocgen/tocgen.php styles'
 			},
 			options:
 			{

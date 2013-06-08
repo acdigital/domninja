@@ -98,7 +98,7 @@
 
 .dn_list_panel .dn_amount_fail
 {
-	color: #bbb;
+	text-decoration: line-through;
 }
 
 /* @section 3.4 amount ninja */
