@@ -80,7 +80,7 @@ module.exports = function (grunt)
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('default', ['jshint', 'csslint']);
 	grunt.registerTask('toc', ['shell:toc']);
 	grunt.registerTask('deploy', ['uglify', 'cssmin']);
 };
