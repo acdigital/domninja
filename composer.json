@@ -7,12 +7,12 @@
 			"package":
 			{
 				"name": "tocgen",
-				"version": "2.0",
+				"version": "2.1",
 				"source":
 				{
 					"url": "https://github.com/redaxmedia/tocgen.git",
 					"type": "git",
-					"reference": "2.0"
+					"reference": "2.1"
 				}
 			}
 		}
@@ -20,7 +20,7 @@
 	"require":
 	{
 		"php": ">5.3.2",
-		"tocgen": "2.0"
+		"tocgen": "2.1"
 	},
 	"scripts":
 	{
@@ -29,6 +29,11 @@
 			"del composer.lock",
 			"npm install -g grunt-cli",
 			"npm install"
+		],
+		"post-update-cmd":
+		[
+			"del composer.lock",
+			"npm update"
 		]
 	}
 }
