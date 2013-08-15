@@ -8,8 +8,14 @@ module.exports = function (grunt)
 	{
 		jshint:
 		{
-			gruntfile: ['gruntfile.js'],
-			dn: ['scripts/dn.js'],
+			gruntfile:
+			[
+				'gruntfile.js'
+			],
+			dn:
+			[
+				'scripts/dn.js'
+			],
 			options:
 			{
 				jshintrc: '.jshintrc'
@@ -19,11 +25,17 @@ module.exports = function (grunt)
 		{
 			dn:
 			{
-				src: ['styles/dn.css']
+				src:
+				[
+					'styles/dn.css'
+				]
 			},
 			index:
 			{
-				src: ['styles/index.css']
+				src:
+				[
+					'styles/index.css'
+				]
 			},
 			options:
 			{
@@ -36,7 +48,10 @@ module.exports = function (grunt)
 			{
 				files:
 				{
-					'scripts/dn_min.js': ['scripts/dn.js']
+					'scripts/dn_min.js':
+					[
+						'scripts/dn.js'
+					]
 				}
 			}
 		},
@@ -46,14 +61,21 @@ module.exports = function (grunt)
 			{
 				files:
 				{
-					'styles/index_min.css': ['styles/reset.css', 'styles/index.css']
+					'styles/index_min.css':
+					[
+						'styles/reset.css',
+						'styles/index.css'
+					]
 				}
 			},
 			dn:
 			{
 				files:
 				{
-					'styles/dn_min.css': ['styles/dn.css']
+					'styles/dn_min.css':
+					[
+						'styles/dn.css'
+					]
 				}
 			}
 		},
@@ -80,7 +102,18 @@ module.exports = function (grunt)
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint', 'csslint']);
-	grunt.registerTask('toc', ['shell:toc']);
-	grunt.registerTask('deploy', ['uglify', 'cssmin']);
+	grunt.registerTask('default',
+	[
+		'jshint',
+		'csslint'
+	]);
+	grunt.registerTask('toc',
+	[
+		'shell:toc'
+	]);
+	grunt.registerTask('deploy',
+	[
+		'uglify',
+		'cssmin'
+	]);
 };
