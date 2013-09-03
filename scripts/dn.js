@@ -275,7 +275,7 @@
 
 		dn.calcElementsAmount = function ()
 		{
-			var i = '';
+			var i = 0;
 
 			for (i in dn.setup)
 			{
@@ -335,7 +335,7 @@
 
 		dn.calcScriptGlobals = function ()
 		{
-			var i = '';
+			var i = 0;
 
 			for (i in window)
 			{
@@ -353,7 +353,14 @@
 		{
 			if (typeof window.console === 'object')
 			{
-				window.console.log(dn.setup);
+				if (typeof window.console.info === 'function')
+				{
+					window.console.info(dn.wording.title);
+				}
+				if (typeof window.console.log === 'function')
+				{
+					window.console.log(dn.setup);
+				}
 			}
 		}();
 
@@ -409,7 +416,8 @@
 
 		dn.createPanelItems = function ()
 		{
-			var output = '', i = '';
+			var output = '',
+				i = 0;
 
 			/* collect output */
 
