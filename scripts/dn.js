@@ -275,9 +275,7 @@
 
 		dn.calcElementsAmount = function ()
 		{
-			var i = 0;
-
-			for (i in dn.setup)
+			for (var i in dn.setup)
 			{
 				if (dn.setup.hasOwnProperty(i))
 				{
@@ -335,9 +333,7 @@
 
 		dn.calcScriptGlobals = function ()
 		{
-			var i = 0;
-
-			for (i in window)
+			for (var i in window)
 			{
 				if (window.hasOwnProperty(i))
 				{
@@ -416,12 +412,11 @@
 
 		dn.createPanelItems = function ()
 		{
-			var output = '',
-				i = 0;
+			var output = '';
 
 			/* collect output */
 
-			for (i in dn.setup)
+			for (var i in dn.setup)
 			{
 				if (dn.setup.hasOwnProperty(i))
 				{
