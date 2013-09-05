@@ -21,6 +21,8 @@
 	"white": true,
 	"predef":
 	[
-		"jQuery"
+		"dn",
+		"jQuery",
+		"Zepto"
 	]
 }

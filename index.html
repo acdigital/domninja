@@ -13,18 +13,18 @@
 			DOM Ninja - Frontend developer bookmarklet by <a href="http://redaxmedia.com" title="Redaxmedia">Redaxmedia</a>
 		</div>
 		<a class="link_drag" href="javascript:
-			(function ()
+			(function (doc)
 			{
 				/* load jquery */
 
-				if (typeof jQuery === 'undefined')
+				if (typeof window.jQuery === 'undefined')
 				{
-					var loadJQ = document.createElement('script');
+					var loadJQ = doc.createElement('script');
 
 					loadJQ.type = 'text/javascript';
 					loadJQ.onload = loadDN;
-					loadJQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
-					document.body.appendChild(loadJQ);
+					loadJQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js';
+					doc.body.appendChild(loadJQ);
 				}
 				else
 				{
@@ -53,7 +53,7 @@
 					loadDNStyle.rel = 'stylesheet';
 					document.getElementsByTagName('head')[0].appendChild(loadDNStyle);
 				}
-			}());
+			}(document));
 			" title="Frontend developer bookmarklet">Drag DOM Ninja to your bookmarks bar
 		</a>
 		<div class="box_content">

@@ -4,7 +4,7 @@
  * 1. dom ninja
  */
 
-(function ($)
+(function (win, $)
 {
 	'use strict';
 
@@ -12,7 +12,7 @@
 
 	$(function ()
 	{
-		var dn = dn || {};
+		win.dn = win.dn || {};
 
 		/* wording */
 
@@ -333,9 +333,9 @@
 
 		dn.calcScriptGlobals = function ()
 		{
-			for (var i in window)
+			for (var i in win)
 			{
-				if (window.hasOwnProperty(i))
+				if (win.hasOwnProperty(i))
 				{
 					dn.setup.scriptGlobals.elements.push(i);
 					dn.setup.scriptGlobals.amount++;
@@ -347,15 +347,15 @@
 
 		dn.consoleLog = function ()
 		{
-			if (typeof window.console === 'object')
+			if (typeof win.console === 'object')
 			{
-				if (typeof window.console.info === 'function')
+				if (typeof win.console.info === 'function')
 				{
-					window.console.info(dn.wording.title);
+					win.console.info(dn.wording.title);
 				}
-				if (typeof window.console.log === 'function')
+				if (typeof win.console.log === 'function')
 				{
-					window.console.log(dn.setup);
+					win.console.log(dn.setup);
 				}
 			}
 		}();
@@ -372,7 +372,7 @@
 		dn.createPanel = function ()
 		{
 			dn.panel = dn.panel || {};
-			
+
 			/* destroy panel */
 
 			dn.destroyPanel();
@@ -485,4 +485,4 @@
 			dn.panel.body.addClass('dn_score_' + dn.type);
 		}();
 	});
-})(jQuery);
+})(window, window.jQuery);
