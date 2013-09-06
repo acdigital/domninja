@@ -1,5 +1,8 @@
 {
-	"name": "DN",
+	"name": "redaxmedia/domninja",
+	"description": "Frontend developer bookmarklet",
+	"version": "1.0.0",
+	"licence": "GPL-3.0",
 	"repositories":
 	[
 		{
