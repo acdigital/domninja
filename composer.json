@@ -4,27 +4,10 @@
 	"version": "1.0.0",
 	"homepage": "http://domninja.com",
 	"licence": "GPL-3.0",
-	"repositories":
-	[
-		{
-			"type": "package",
-			"package":
-			{
-				"name": "tocgen",
-				"version": "2.2.1",
-				"source":
-				{
-					"url": "https://github.com/redaxmedia/tocgen.git",
-					"type": "git",
-					"reference": "2.2.1"
-				}
-			}
-		}
-	],
-	"require":
+	"require-dev":
 	{
 		"php": ">5.3.2",
-		"tocgen": "2.2.1"
+		"redaxmedia/tocgen": "2.2.1"
 	},
 	"scripts":
 	{
