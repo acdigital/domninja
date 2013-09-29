@@ -6,9 +6,36 @@ module.exports = function (grunt)
 
 	grunt.initConfig(
 	{
+		watch:
+		{
+			scripts:
+			{
+				files:
+				[
+					'<%=jshint.dependency%>',
+					'<%=jshint.dn%>'
+				],
+				tasks:
+				[
+					'jshint'
+				]
+			},
+			styles:
+			{
+				files:
+				[
+					'<%=csslint.dn.src%>',
+					'<%=csslint.index.src%>'
+				],
+				tasks:
+				[
+					'csslint'
+				]
+			}
+		},
 		jshint:
 		{
-			gruntfile:
+			dependency:
 			[
 				'gruntfile.js'
 			],
@@ -20,6 +47,14 @@ module.exports = function (grunt)
 			{
 				jshintrc: '.jshintrc'
 			}
+		},
+		jsonlint:
+		{
+			dependency:
+			[
+				'composer.json',
+				'package.json'
+			]
 		},
 		csslint:
 		{
@@ -40,6 +75,20 @@ module.exports = function (grunt)
 			options:
 			{
 				csslintrc: '.csslintrc'
+			}
+		},
+		htmlhint:
+		{
+			index:
+			{
+				src:
+				[
+					'index.html'
+				]
+			},
+			options:
+			{
+				htmlhintrc: '.htmlhintrc'
 			}
 		},
 		uglify:
@@ -98,6 +147,9 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-htmlhint');
+	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-shell');
 
 	/* register tasks */
@@ -105,7 +157,9 @@ module.exports = function (grunt)
 	grunt.registerTask('default',
 	[
 		'jshint',
-		'csslint'
+		'jsonlint',
+		'csslint',
+		'htmlhint'
 	]);
 	grunt.registerTask('toc',
 	[
