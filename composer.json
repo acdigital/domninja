@@ -10,25 +10,17 @@
 	},
 	"require-dev":
 	{
-		"redaxmedia/tocgen": "2.2.1",
-		"yohang/dependency-tools": "1.1.0"
+		"redaxmedia/tocgen": "2.2.1"
 	},
 	"scripts":
 	{
 		"post-install-cmd":
 		[
-			"Yohang\\DependencyTools::installDeps"
+			"npm install"
 		],
 		"post-update-cmd":
 		[
-			"Yohang\\DependencyTools::installDeps"
+			"npm update"
 		]
-	},
-	"extra":
-	{
-		"dependency-tools":
-		{
-			"npm": true
-		}
 	}
 }
