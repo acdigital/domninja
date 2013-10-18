@@ -51,13 +51,8 @@
 
 .dn_title_panel
 {
-	-moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
-	background: #222;
-	background: rgba(34, 34, 34, 0.9);
-	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
 	cursor: pointer;
-	font: bold 2em arial;
+	font-size: 2em;
 	letter-spacing: 0.25em;
 	margin-bottom: 0.5em;
 	padding: 1em;
@@ -79,11 +74,11 @@
 
 .dn_list_panel li
 {
-	-moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.2);
 	background: #222;
 	background: rgba(34, 34, 34, 0.9);
-	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.2);
 	margin-bottom: 1em;
 	padding: 2em;
 }
@@ -92,14 +87,13 @@
 
 .dn_list_panel .dn_item_message
 {
-	font: 1em 'trebuchet ms', arial;
 	text-align: center;
 }
 
 .dn_list_panel .dn_score
 {
 	display: block;
-	font: bold 2.5em arial;
+	font-size: 2.5em;
 	margin-bottom: 0.5em;
 	font-weight: bold;
 }
@@ -110,14 +104,10 @@
 {
 	background: green;
 	background: rgba(1, 128, 0, 0.8);
-	border-left: 1em solid green;
-	border-left-color: rgba(0, 0, 0, 0.6);
 }
 
 .dn_list_panel .dn_amount_novice
 {
 	background: red;
 	background: rgba(266, 0, 0, 0.8);
-	border-left: 1em solid red;
-	border-left-color: rgba(0, 0, 0, 0.6);
 }

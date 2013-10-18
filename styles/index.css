@@ -4,7 +4,6 @@
  * 1. general
  * 2. box content
  * 3. link drag
- *    3.1 hover effect
  */
 
 /* @section 1. general */
@@ -50,7 +49,7 @@ body
 	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
 	display: block;
 	cursor: move;
-	font: bold 2em arial;
+	font-size: 2em;
 	letter-spacing: 0.25em;
 	margin: 1em auto;
 	padding: 0.5em;

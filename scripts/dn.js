@@ -12,6 +12,7 @@
  *    1.8 create panel
  *    1.9 create panel items
  *    1.10 handle score
+ *    1.11 init
  */
 
 (function (win, $)
