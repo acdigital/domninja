@@ -2,6 +2,16 @@
  * @tableofcontents
  *
  * 1. dom ninja
+ *    1.1 calculate elements amount
+ *    1.2 calculate conditional comments
+ *    1.3 calculate display ratio
+ *    1.4 calculate duplicated id
+ *    1.5 calculate script globals
+ *    1.6 console log
+ *    1.7 destroy panel
+ *    1.8 create panel
+ *    1.9 create panel items
+ *    1.10 handle score
  */
 
 (function (win, $)
@@ -13,6 +23,11 @@
 	$(function ()
 	{
 		win.dn = win.dn || {};
+
+		/* misc */
+
+		dn.version = '1.1.0';
+		dn.host = window.location.hostname.split('.').slice(-2).join('.');
 
 		/* wording */
 
@@ -38,15 +53,16 @@
 
 		dn.html = $('html');
 		dn.body = dn.html.find('body');
-		dn.head = dn.body.find('head');
+		dn.head = dn.html.find('head');
 		dn.code = dn.html.html();
 
-		/* files */
+		/* elements */
 
-		dn.files =
+		dn.elements =
 		{
-			css: 'dn_min.css',
-			js: 'dn_min.js'
+			panel: dn.body.find('div.js_dn_panel'),
+			css: dn.head.find('link[href$="dn_min.css"]'),
+			js: dn.body.find('script[src$="dn_min.js"]')
 		};
 
 		/* setup */
@@ -55,15 +71,21 @@
 		{
 			documentTags:
 			{
-				elements: $('*').not('div.js_dn_panel, div.js_dn_panel *, link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]'),
+				elements: $('*').not(dn.elements.panel).not(dn.elements.panel.find('*')).not(dn.elements.css).not(dn.elements.js),
 				description: 'Document tags',
 				amountNinja: 1000,
 				amountTrainee: 1500,
 				amountNovice: 2500
 			},
+			canonicalUrl:
+			{
+				elements: dn.head.find('link[rel="canonical"]'),
+				description: 'Canonical URL',
+				amountGeneral: 1
+			},
 			httpRequests:
 			{
-				elements: $('iframe[src], img[src], link[href], script[src], source[src], object[data]').not('link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]'),
+				elements: dn.html.find('iframe[src], img[src], link[href], script[src], source[src], object[data]').not(dn.elements.css).not(dn.elements.js),
 				description: 'HTTP requests',
 				amountNinja: 15,
 				amountTrainee: 25,
@@ -223,7 +245,7 @@
 			},
 			styleExternals:
 			{
-				elements: dn.html.find('link[type="text/css"][rel="stylesheet"]').not('link[href$="' + dn.files.css + '"]'),
+				elements: dn.html.find('link[rel="stylesheet"]').not(dn.elements.css),
 				description: 'External style files',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -237,6 +259,14 @@
 				amountTrainee: 10,
 				amountNovice: 20
 			},
+			styleThirdParty:
+			{
+				elements: dn.html.find('link[rel="stylesheet"]').not('link[rel="stylesheet"][href*="' + dn.host + '"]').not(dn.elements.css),
+				description: 'Third Party styles',
+				amountNinja: 5,
+				amountTrainee: 10,
+				amountNovice: 20
+			},
 			scriptTagsInHead:
 			{
 				elements: dn.head.find('script'),
@@ -247,7 +277,7 @@
 			},
 			scriptExternals:
 			{
-				elements: dn.head.find('script[type="text/javascript"][src]').not('script[src$="' + dn.files.js + '"]'),
+				elements: dn.head.find('script[src]').not(dn.elements.js),
 				description: 'External script files',
 				amountNinja: 5,
 				amountTrainee: 10,
@@ -268,10 +298,18 @@
 				amountNinja: 20,
 				amountTrainee: 50,
 				amountNovice: 100
+			},
+			scriptThirdParty:
+			{
+				elements: dn.html.find('script[src]').not('script[src*="' + dn.host + '"]').not(dn.elements.js),
+				description: 'Third Party scripts',
+				amountNinja: 5,
+				amountTrainee: 10,
+				amountNovice: 20
 			}
 		};
 
-		/* calculate elements amount */
+		/* @section 1.1 calculate elements amount */
 
 		dn.calcElementsAmount = function ()
 		{
@@ -292,7 +330,7 @@
 			}
 		}();
 
-		/* calculate conditional comments */
+		/* @section 1.2 calculate conditional comments */
 
 		dn.calcConditionalComments = function ()
 		{
@@ -302,7 +340,7 @@
 			}
 		}();
 
-		/* calculate display ratio */
+		/* @section 1.3 calculate display ratio */
 
 		dn.calcDisplayRatio = function ()
 		{
@@ -312,13 +350,13 @@
 			}
 		}();
 
-		/* calculate duplicated id */
+		/* @section 1.4 calculate duplicated id */
 
 		dn.calcDuplicatedID = function ()
 		{
 			dn.setup.hasIDTags.elements.each(function ()
 			{
-				var id = $('[id=' + this.id + ']'),
+				var id = $('[id="' + this.id + '"]'),
 					length = id.length;
 
 				if (length > 1 && id[0] === this)
@@ -329,7 +367,7 @@
 			});
 		}();
 
-		/* calculate script globals */
+		/* @section 1.5 calculate script globals */
 
 		dn.calcScriptGlobals = function ()
 		{
@@ -343,7 +381,7 @@
 			}
 		}();
 
-		/* console log */
+		/* @section 1.6 console log */
 
 		dn.consoleLog = function ()
 		{
@@ -351,7 +389,7 @@
 			{
 				if (typeof win.console.info === 'function')
 				{
-					win.console.info(dn.wording.title);
+					win.console.info(dn.wording.title + ' ' + dn.version);
 				}
 				if (typeof win.console.log === 'function')
 				{
@@ -360,26 +398,23 @@
 			}
 		}();
 
-		/* destroy panel */
+		/* @section 1.7 destroy panel */
 
 		dn.destroyPanel = function ()
 		{
-			dn.body.find('div.js_dn_panel, link[href$="' + dn.files.css + '"], script[src$="' + dn.files.js + '"]').remove();
+			dn.body.find('div.js_dn_panel').add(dn.elements.css).add(dn.elements.js).remove();
+			delete win.dn;
 		};
 
-		/* create panel */
+		/* @section 1.8 create panel */
 
 		dn.createPanel = function ()
 		{
 			dn.panel = dn.panel || {};
 
-			/* destroy panel */
-
-			dn.destroyPanel();
-
 			/* append panel */
 
-			dn.panel.body = $('<div class="js_dn_panel dn_panel"></div>').appendTo(dn.body);
+			dn.panel.body = $('<div class="js_dn_panel dn_panel"></div>').prependTo(dn.body);
 			dn.panel.title = $('<h1 class="js_dn_title_panel dn_title_panel">' + dn.wording.title + '</h1>').appendTo(dn.panel.body);
 			dn.panel.list = $('<ul class="js_dn_list_panel dn_list_panel"></ul>').appendTo(dn.panel.body);
 
@@ -406,9 +441,9 @@
 			{
 				dn.panel.title.text(dn.wording.title);
 			});
-		}();
+		};
 
-		/* create panel items */
+		/* @section 1.9 create panel items */
 
 		dn.createPanelItems = function ()
 		{
@@ -421,7 +456,7 @@
 				if (dn.setup.hasOwnProperty(i))
 				{
 					output += '<li class="dn_amount_';
-					if (dn.setup[i].amount <= dn.setup[i].amountNinja)
+					if (dn.setup[i].amount <= dn.setup[i].amountNinja || dn.setup[i].amount === dn.setup[i].amountGeneral)
 					{
 						dn.score++;
 						output += 'ninja';
@@ -430,15 +465,10 @@
 					{
 						output += 'trainee';
 					}
-					else if (dn.setup[i].amount <= dn.setup[i].amountNovice)
-					{
-						dn.score--;
-						output += 'novice';
-					}
 					else
 					{
 						dn.score--;
-						output += 'fail';
+						output += 'novice';
 					}
 					output += '" title="Ninja: ' + dn.setup[i].amountNinja + ' | Trainee: ' + dn.setup[i].amountTrainee + ' | Novice: ' + dn.setup[i].amountNovice + '">' + dn.setup[i].description + ': ' + dn.setup[i].amount + '</li>';
 				}
@@ -447,24 +477,23 @@
 			/* append output to panel list */
 
 			dn.panel.list.html(output).fadeIn(500);
-		}();
+		};
 
-		/* handle score */
+		/* @section 1.10 handle score */
 
 		dn.handleScore = function ()
 		{
 			var output = '';
 
-			/* prevent negative score */
+			/* handle negative score */
 
 			if (dn.score < 0)
 			{
 				dn.score = 0;
 			}
 
-			/* collect output */
+			/* handle score */
 
-			output = '<li class="dn_item_message" title="' + dn.wording.console + '">';
 			if (dn.score >= dn.total - 5)
 			{
 				dn.type = 'ninja';
@@ -477,12 +506,33 @@
 			{
 				dn.type = 'novice';
 			}
+
+			/* collect output */
+
+			output = '<li class="dn_item_message dn_amount_' + dn.type + '" title="' + dn.wording.console + '">';
 			output += '<span class="dn_score">' + dn.score + '/' + dn.total + '</span><span class="dn_message">' + dn.wording.message[dn.type] + '</span></li>';
 
 			/* modify panel */
 
 			dn.panel.list.append(output);
 			dn.panel.body.addClass('dn_score_' + dn.type);
-		}();
+		};
+
+		/* @section 1.11 init */
+
+		dn.init = function ()
+		{
+			dn.createPanel();
+			dn.createPanelItems();
+			dn.handleScore();
+			dn.startup = true;
+		};
+
+		/* init as needed */
+		
+		if (!win.dn.startup)
+		{
+			dn.init();
+		}
 	});
 })(window, window.jQuery);
