@@ -27,7 +27,7 @@
 
 		/* misc */
 
-		dn.version = '1.1.0';
+		dn.version = '1.1.1';
 		dn.host = window.location.hostname.split('.').slice(-2).join('.');
 
 		/* wording */
@@ -236,7 +236,15 @@
 				amountTrainee: 20,
 				amountNovice: 50
 			},
-			styleTagsInBody:
+			styleTagsInline:
+			{
+				elements: dn.html.find('style'),
+				description: 'Inline style tags',
+				amountNinja: 5,
+				amountTrainee: 10,
+				amountNovice: 20
+			},
+			styleWrongPlace:
 			{
 				elements: dn.body.find('style'),
 				description: 'Style tag in body',
@@ -252,14 +260,6 @@
 				amountTrainee: 10,
 				amountNovice: 20
 			},
-			styleInlineAttributes:
-			{
-				elements: dn.html.find('[style]').not('div.js_dn_panel'),
-				description: 'Inline style attributes',
-				amountNinja: 0,
-				amountTrainee: 10,
-				amountNovice: 20
-			},
 			styleThirdParty:
 			{
 				elements: dn.html.find('link[rel="stylesheet"]').not('link[rel="stylesheet"][href*="' + dn.host + '"]').not(dn.elements.css),
@@ -268,7 +268,23 @@
 				amountTrainee: 10,
 				amountNovice: 20
 			},
-			scriptTagsInHead:
+			styleAttributes:
+			{
+				elements: dn.html.find('[style]').not('div.js_dn_panel'),
+				description: 'Inline style attributes',
+				amountNinja: 0,
+				amountTrainee: 10,
+				amountNovice: 20
+			},
+			scriptTagsInline:
+			{
+				elements: dn.html.find('script').not('[src]'),
+				description: 'Inline script tags',
+				amountNinja: 5,
+				amountTrainee: 10,
+				amountNovice: 20
+			},
+			scriptWrongPlace:
 			{
 				elements: dn.head.find('script'),
 				description: 'Script tags in head',
@@ -284,7 +300,15 @@
 				amountTrainee: 10,
 				amountNovice: 20
 			},
-			scriptInlineAttributes:
+			scriptThirdParty:
+			{
+				elements: dn.html.find('script[src]').not('script[src*="' + dn.host + '"]').not(dn.elements.js),
+				description: 'Third Party scripts',
+				amountNinja: 5,
+				amountTrainee: 10,
+				amountNovice: 20
+			},
+			scriptAttributes:
 			{
 				elements: dn.html.find('[onabort], [onactivate], [onafterprint], [onafterupdate], [onbeforeactivate], [onbeforecopy], [onbeforecut], [onbeforedeactivate], [onbeforeeditfocus], [onbeforepaste], [onbeforeprint], [onbeforeunload], [onbeforeupdate], [onblur], [onbounce], [oncellchange], [onchange], [onclick], [oncontextmenu], [oncontrolselect], [oncopy], [oncut], [ondataavailable], [ondatasetchanged], [ondatasetcomplete], [ondblclick], [ondeactivate], [ondrag], [ondragend], [ondragenter], [ondragleave], [ondragover], [ondragstart], [ondrop], [onerror], [onerrorupdate], [onfilterchange], [onfinish], [onfocus], [onfocusin], [onfocusout], [onhelp], [onkeydown], [onkeypress], [onkeyup], [onlayoutcomplete], [onload], [onlosecapture], [onmousedown], [onmouseenter], [onmouseleave], [onmousemove], [onmouseout], [onmouseover], [onmouseup], [onmousewheel], [onmove], [onmoveend], [onmovestart], [onpaste], [onpropertychange], [onreadystatechange], [onreset], [onresize], [onresizeend], [onresizestart], [onrowenter], [onrowexit], [onrowsdelete], [onrowsinserted], [onscroll], [onselect], [onselectionchange], [onselectstart], [onstartonstop], [onsubmit], [onunload]'),
 				description: 'Inline script attributes',
@@ -299,14 +323,6 @@
 				amountNinja: 20,
 				amountTrainee: 50,
 				amountNovice: 100
-			},
-			scriptThirdParty:
-			{
-				elements: dn.html.find('script[src]').not('script[src*="' + dn.host + '"]').not(dn.elements.js),
-				description: 'Third Party scripts',
-				amountNinja: 5,
-				amountTrainee: 10,
-				amountNovice: 20
 			}
 		};
 
