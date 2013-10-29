@@ -27,7 +27,7 @@
 
 		/* misc */
 
-		dn.version = '1.1.0';
+		dn.version = '2.0.0';
 		dn.host = window.location.hostname.split('.').slice(-2).join('.');
 
 		/* wording */
@@ -416,7 +416,7 @@
 			/* append panel */
 
 			dn.panel.body = $('<div class="js_dn_panel dn_panel"></div>').prependTo(dn.body);
-			dn.panel.title = $('<h1 class="js_dn_title_panel dn_title_panel">' + dn.wording.title + '</h1>').appendTo(dn.panel.body);
+			dn.panel.title = $('<h1 class="js_dn_title_panel dn_title_panel" title="' + dn.version + '">' + dn.wording.title + '</h1>').appendTo(dn.panel.body);
 			dn.panel.list = $('<ul class="js_dn_list_panel dn_list_panel"></ul>').appendTo(dn.panel.body);
 
 			/* scroll top */
@@ -456,7 +456,7 @@
 			{
 				if (dn.setup.hasOwnProperty(i))
 				{
-					output += '<li class="dn_amount_';
+					output += '<li class="dn_item_panel dn_amount_';
 					if (dn.setup[i].amount <= dn.setup[i].amountNinja || dn.setup[i].amount === dn.setup[i].amountGeneral)
 					{
 						dn.score++;
@@ -471,7 +471,22 @@
 						dn.score--;
 						output += 'novice';
 					}
-					output += '" title="Ninja: ' + dn.setup[i].amountNinja + ' | Trainee: ' + dn.setup[i].amountTrainee + ' | Novice: ' + dn.setup[i].amountNovice + '">' + dn.setup[i].description + ': ' + dn.setup[i].amount + '</li>';
+					output += '" title="';
+
+					/* general amount */
+
+					if (dn.setup[i].amountGeneral)
+					{
+						output += 'General: ' + dn.setup[i].amountGeneral;
+					}
+
+					/* else multiple amounts */
+
+					else
+					{
+						output += 'Ninja: ' + dn.setup[i].amountNinja + ' | Trainee: ' + dn.setup[i].amountTrainee + ' | Novice: ' + dn.setup[i].amountNovice;
+					}
+					output += '">' + dn.setup[i].description + ': ' + dn.setup[i].amount + '</li>';
 				}
 			}
 
@@ -530,7 +545,7 @@
 		};
 
 		/* init as needed */
-		
+
 		if (!win.dn.startup)
 		{
 			dn.init();

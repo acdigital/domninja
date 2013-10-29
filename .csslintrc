@@ -1,4 +1,6 @@
 {
+	"adjoining-classes": false,
+	"gradients": false,
 	"fallback-colors": false,
 	"outline-none": false
 }
