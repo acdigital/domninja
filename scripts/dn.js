@@ -7,12 +7,11 @@
  *    1.3 calculate display ratio
  *    1.4 calculate duplicated id
  *    1.5 calculate script globals
- *    1.6 console log
- *    1.7 destroy panel
- *    1.8 create panel
- *    1.9 create panel items
- *    1.10 handle score
- *    1.11 init
+ *    1.6 destroy panel
+ *    1.7 create panel
+ *    1.8 create panel items
+ *    1.9 handle score
+ *    1.10 init
  */
 
 (function (win, $)
@@ -382,24 +381,7 @@
 			}
 		}();
 
-		/* @section 1.6 console log */
-
-		dn.consoleLog = function ()
-		{
-			if (typeof win.console === 'object')
-			{
-				if (typeof win.console.info === 'function')
-				{
-					win.console.info(dn.wording.title + ' ' + dn.version);
-				}
-				if (typeof win.console.log === 'function')
-				{
-					win.console.log(dn.setup);
-				}
-			}
-		}();
-
-		/* @section 1.7 destroy panel */
+		/* @section 1.6 destroy panel */
 
 		dn.destroyPanel = function ()
 		{
@@ -407,7 +389,7 @@
 			delete win.dn;
 		};
 
-		/* @section 1.8 create panel */
+		/* @section 1.7 create panel */
 
 		dn.createPanel = function ()
 		{
@@ -444,7 +426,7 @@
 			});
 		};
 
-		/* @section 1.9 create panel items */
+		/* @section 1.8 create panel items */
 
 		dn.createPanelItems = function ()
 		{
@@ -457,31 +439,53 @@
 				if (dn.setup.hasOwnProperty(i))
 				{
 					output += '<li class="dn_item_panel dn_amount_';
+
+					/* Ninja */
+
 					if (dn.setup[i].amount <= dn.setup[i].amountNinja || dn.setup[i].amount === dn.setup[i].amountGeneral)
 					{
 						dn.score++;
 						output += 'ninja';
 					}
+
+					/* Trainee */
+
 					else if (dn.setup[i].amount <= dn.setup[i].amountTrainee)
 					{
 						output += 'trainee';
+
+						/* console output */
+
+						if (typeof win.console === 'object' && dn.setup[i].elements)
+						{
+							win.console.warn(dn.setup[i].description);
+							win.console.log(dn.setup[i].elements);
+						}
 					}
+
+					/* Novice */
+
 					else
 					{
 						dn.score--;
 						output += 'novice';
+
+						/* console output */
+
+						if (typeof win.console === 'object' && dn.setup[i].elements)
+						{
+							win.console.warn(dn.setup[i].description);
+							win.console.log(dn.setup[i].elements);
+						}
 					}
+
+					/* collect title */
+
 					output += '" title="';
-
-					/* general amount */
-
 					if (dn.setup[i].amountGeneral)
 					{
 						output += 'General: ' + dn.setup[i].amountGeneral;
 					}
-
-					/* else multiple amounts */
-
 					else
 					{
 						output += 'Ninja: ' + dn.setup[i].amountNinja + ' | Trainee: ' + dn.setup[i].amountTrainee + ' | Novice: ' + dn.setup[i].amountNovice;
@@ -495,7 +499,7 @@
 			dn.panel.list.html(output).fadeIn(500);
 		};
 
-		/* @section 1.10 handle score */
+		/* @section 1.9 handle score */
 
 		dn.handleScore = function ()
 		{
@@ -534,7 +538,7 @@
 			dn.panel.body.addClass('dn_score_' + dn.type);
 		};
 
-		/* @section 1.11 init */
+		/* @section 1.10 init */
 
 		dn.init = function ()
 		{
