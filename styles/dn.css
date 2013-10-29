@@ -17,23 +17,19 @@
 
 .dn_panel
 {
-	-moz-box-shadow: 0 1em 0 rgba(0, 0, 0, 0.2);
-	-webkit-box-shadow: 0 1em 0 rgba(0, 0, 0, 0.2);
-	background: #1e1e1e;
-	background: -moz-linear-gradient(-60deg, #1e1e1e, #2c1947 70%);
-	background: -ms-linear-gradient(-60deg, #1e1e1e, #2c1947 70%);
-	background: -o-linear-gradient(-60deg, #1e1e1e, #2c1947 70%);
-	background: -webkit-linear-gradient(-60deg, #1e1e1e, #2c1947 70%);
-	background: linear-gradient(-60deg, #1e1e1e, #2c1947 70%);
-	box-shadow: 0 1em 0 rgba(0, 0, 0, 0.2);
+	background: #543088;
+	background: -moz-linear-gradient(-60deg, #543088, #2c1947 70%);
+	background: -ms-linear-gradient(-60deg, #543088, #2c1947 70%);
+	background: -o-linear-gradient(-60deg, #543088, #2c1947 70%);
+	background: -webkit-linear-gradient(-60deg, #543088, #2c1947 70%);
+	background: linear-gradient(160deg, #543088, #2c1947 70%);
 	font: 700 0.75rem arial;
 	padding: 1em;
 }
 
 .dn_panel, .dn_panel a
 {
-	color: #000;
-	color: rgba(0, 0, 0, 0.8);
+	color: #fff;
 }
 
 .dn_panel a
@@ -45,7 +41,7 @@
 
 .dn_title_panel
 {
-	color: #dcdcdc;
+	color: #fff;
 	cursor: pointer;
 	font-size: 2em;
 	letter-spacing: 0.25em;

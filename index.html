@@ -2,62 +2,105 @@
 <html lang="en">
 	<head>
 		<title>DOM Ninja - Frontend developer bookmarklet</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
 		<meta name="description" content="Frontend developer bookmarklet" />
 		<meta name="robots" content="all" />
 		<meta name="google-site-verification" content="zDHEx95xKzJC5nfDypXvF2D-DbSD1MIEmhpycnrds_s" />
 		<link type="text/css" href="styles/index_min.css" media="all" rel="stylesheet" />
 	</head>
-	<body class="wrapper">
-		<div class="box_content">
-			DOM Ninja - Frontend developer bookmarklet by <a href="http://redaxmedia.com" title="Redaxmedia">Redaxmedia</a>
+	<body>
+		<div class="content wrapper">
+
+			<h1 class="title_content">DOM Ninja</h1>
+			<div class="box_content">
+				Frontend developer bookmarklet by <a href="http://redaxmedia.com" title="Redaxmedia">Redaxmedia</a>
+			</div>
+
+			<a class="link_drag" href="javascript:
+				(function (doc)
+				{
+					/* load jquery */
+
+					if (typeof window.jQuery === 'undefined')
+					{
+						var loadJQ = doc.createElement('script');
+
+						loadJQ.type = 'text/javascript';
+						loadJQ.onload = loadDN;
+						loadJQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js';
+						doc.body.appendChild(loadJQ);
+					}
+					else
+					{
+						loadDN();
+					}
+
+					/* load dom ninja */
+
+					function loadDN()
+					{
+						/* load script */
+
+						var loadDNScript = document.createElement('script');
+
+						loadDNScript.type = 'text/javascript';
+						loadDNScript.src = 'http://domninja.com/scripts/dn_min.js';
+						document.body.appendChild(loadDNScript);
+
+						/* load style */
+
+						var loadDNStyle = document.createElement('link');
+
+						loadDNStyle.type = 'text/css';
+						loadDNStyle.href = 'http://domninja.com/styles/dn_min.css';
+						loadDNStyle.media = 'all';
+						loadDNStyle.rel = 'stylesheet';
+						document.getElementsByTagName('head')[0].appendChild(loadDNStyle);
+					}
+				}(document));
+				" title="Frontend developer bookmarklet">Drag DOM Ninja to your bookmarks bar
+			</a>
+
+			<div class="box_content">
+				<a href="https://github.com/redaxmedia/domninja" title="DOM Ninja repository on Github">DOM Ninja repository on Github</a> | <a href="https://github.com/redaxmedia/domninja/zipball/master" title="Download the DOM Ninja source">Download the DOM Ninja source</a>
+			</div>
 		</div>
-		<a class="link_drag" href="javascript:
-			(function (doc)
-			{
-				/* load jquery */
-
-				if (typeof window.jQuery === 'undefined')
-				{
-					var loadJQ = doc.createElement('script');
-
-					loadJQ.type = 'text/javascript';
-					loadJQ.onload = loadDN;
-					loadJQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js';
-					doc.body.appendChild(loadJQ);
-				}
-				else
-				{
-					loadDN();
-				}
-
-				/* load dom ninja */
-
-				function loadDN()
-				{
-					/* load script */
-
-					var loadDNScript = document.createElement('script');
-
-					loadDNScript.type = 'text/javascript';
-					loadDNScript.src = 'http://domninja.com/scripts/dn_min.js';
-					document.body.appendChild(loadDNScript);
-
-					/* load style */
-
-					var loadDNStyle = document.createElement('link');
-
-					loadDNStyle.type = 'text/css';
-					loadDNStyle.href = 'http://domninja.com/styles/dn_min.css';
-					loadDNStyle.media = 'all';
-					loadDNStyle.rel = 'stylesheet';
-					document.getElementsByTagName('head')[0].appendChild(loadDNStyle);
-				}
-			}(document));
-			" title="Frontend developer bookmarklet">Drag DOM Ninja to your bookmarks bar
-		</a>
-		<div class="box_content">
-			<a href="https://github.com/redaxmedia/domninja" title="DOM Ninja repository on Github">DOM Ninja repository on Github</a> | <a href="https://github.com/redaxmedia/domninja/zipball/master" title="Download the DOM Ninja source">Download the DOM Ninja source</a>
+				
+		<div class="footer wrapper">
+			
+			<h2 class="title_footer">Criteria for auditing</h2>
+			<ul class="list_footer">
+				<li>Document tags</li>
+				<li>Canonical URL</li>
+				<li>HTTP requests</li>
+				<li>Deprecated tags</li>
+				<li>Deprecated attributes</li>
+				<li>Iframe tags</li>
+				<li>Embed tags</li>
+				<li>Scaled img tags</li>
+				<li>Conditional comments</li>
+				<li>Document comments</li>
+				<li>Empty tags</li>
+				<li>Empty alt attributes</li>
+				<li>Empty href attributes</li>
+				<li>Empty src attributes</li>
+				<li>Visible tags</li>
+				<li>Hidden tags</li>
+				<li>Display ratio</li>
+				<li>Tags with ID</li>
+				<li>Tags with duplicated ID</li>
+				<li>Tags with nested ID</li>
+				<li>Deep nested tags</li>
+				<li>Style tag in body</li>
+				<li>External style files</li>
+				<li>Inline style attributes</li>
+				<li>Third Party styles</li>
+				<li>Script tags in head</li>
+				<li>External script files</li>
+				<li>Inline script attributes</li>
+				<li>Script globals</li>
+				<li>Third Party scripts</li>
+			</ul>
 		</div>
 	</body>
 </html>
