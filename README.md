@@ -4,14 +4,14 @@ DOM Ninja
 > Frontend developer bookmarklet.
 
 
-Get it
-------
+Install
+-------
 
 Browse [domninja.com](http://domninja.com) for the bookmarklet code.
 
 
-Criteria for auditing
----------------------
+Audit criteria
+--------------
 
 * Document tags
 * Canonical URL

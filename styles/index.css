@@ -48,7 +48,7 @@ a
 
 .title_content
 {
-	font-size: 2em;
+	font: bold 2em arial;
 	letter-spacing: 0.25em;
 	margin-bottom: 1em;
 	text-align: center;

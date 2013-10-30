@@ -344,7 +344,7 @@
 					}
 				}
 			}
-		}();
+		};
 
 		/* @section 1.2 calculate conditional comments */
 
@@ -354,7 +354,7 @@
 			{
 				dn.setup.documentComments.amount = dn.setup.documentComments.amount - dn.setup.conditionalComments.amount;
 			}
-		}();
+		};
 
 		/* @section 1.3 calculate display ratio */
 
@@ -364,7 +364,7 @@
 			{
 				dn.setup.displayRatio.amount = Math.round(dn.setup.hiddenTags.amount / dn.setup.visibleTags.amount * 100);
 			}
-		}();
+		};
 
 		/* @section 1.4 calculate duplicated id */
 
@@ -381,7 +381,7 @@
 					dn.setup.duplicatedIDTags.amount += length;
 				}
 			});
-		}();
+		};
 
 		/* @section 1.5 calculate script globals */
 
@@ -395,7 +395,7 @@
 					dn.setup.scriptGlobals.amount++;
 				}
 			}
-		}();
+		};
 
 		/* @section 1.6 destroy panel */
 
@@ -426,7 +426,7 @@
 
 			/* panel title click */
 
-			dn.panel.title.click(function ()
+			dn.panel.title.on('click', function ()
 			{
 				dn.destroyPanel();
 			});
@@ -483,7 +483,6 @@
 
 					else
 					{
-						dn.score--;
 						output += 'novice';
 
 						/* console output */
@@ -512,7 +511,7 @@
 
 			/* append output to panel list */
 
-			dn.panel.list.html(output).fadeIn(500);
+			dn.panel.list.html(output);
 		};
 
 		/* @section 1.9 handle score */
@@ -558,6 +557,11 @@
 
 		dn.init = function ()
 		{
+			dn.calcElementsAmount();
+			dn.calcConditionalComments();
+			dn.calcDisplayRatio();
+			dn.calcDuplicatedID();
+			dn.calcScriptGlobals();
 			dn.createPanel();
 			dn.createPanelItems();
 			dn.handleScore();

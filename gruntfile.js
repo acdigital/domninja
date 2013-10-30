@@ -123,7 +123,6 @@ module.exports = function (grunt)
 				{
 					'styles/dn_min.css':
 					[
-						'styles/reset.css',
 						'styles/dn.css'
 					]
 				}
