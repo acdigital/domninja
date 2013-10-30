@@ -79,10 +79,22 @@
 				amountTrainee: 1500,
 				amountNovice: 2500
 			},
+			charsetTag:
+			{
+				elements: dn.head.children('meta').filter('[charset], [content*="charset"]').first(),
+				description: 'Charset tag',
+				amountGeneral: 1
+			},
 			baseTag:
 			{
 				elements: dn.head.find('base[href]'),
 				description: 'Base tag',
+				amountGeneral: 1
+			},
+			titleTag:
+			{
+				elements: dn.head.find('title'),
+				description: 'Title tag',
 				amountGeneral: 1
 			},
 			canonicalUrl:
