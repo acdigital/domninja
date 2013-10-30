@@ -25,6 +25,8 @@
 	background: linear-gradient(160deg, #543088, #2c1947 70%);
 	font: 700 0.75rem arial;
 	padding: 1em;
+	position: relative;
+	z-index: 10000;
 }
 
 .dn_panel, .dn_panel a
