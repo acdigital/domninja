@@ -79,6 +79,12 @@
 				amountTrainee: 1500,
 				amountNovice: 2500
 			},
+			baseTag:
+			{
+				elements: dn.head.find('base[href]'),
+				description: 'Base tag',
+				amountGeneral: 1
+			},
 			canonicalUrl:
 			{
 				elements: dn.head.find('link[rel="canonical"]'),
@@ -279,7 +285,7 @@
 			},
 			styleRules:
 			{
-				elements: '',
+				elements: [],
 				description: 'Style rules',
 				amountNinja: 500,
 				amountTrainee: 1000,
@@ -287,7 +293,7 @@
 			},
 			styleSelectors:
 			{
-				elements: '',
+				elements: [],
 				description: 'Style selectors',
 				amountNinja: 750,
 				amountTrainee: 1250,
@@ -295,7 +301,7 @@
 			},
 			styleIDSelectors:
 			{
-				elements: '',
+				elements: [],
 				description: 'Styled ID selectors',
 				amountNinja: 0,
 				amountTrainee: 5,
@@ -303,7 +309,7 @@
 			},
 			styleUniversalSelectors:
 			{
-				elements: '',
+				elements: [],
 				description: 'Universal selectors',
 				amountNinja: 0,
 				amountTrainee: 5,
@@ -458,6 +464,7 @@
 
 							if (selectorText.match(/\#/g))
 							{
+								dn.setup.styleIDSelectors.push(j);
 								dn.setup.styleIDSelectors.amount++;
 							}
 
@@ -472,6 +479,7 @@
 
 					/* calculate style rules */
 
+					dn.setup.styleRules.elements.push(i);
 					dn.setup.styleRules.amount += styleSheets.cssRules.length;
 				}
 			}
@@ -489,6 +497,13 @@
 					dn.setup.scriptGlobals.amount++;
 				}
 			}
+		};
+
+		/* @section 1.6 cleanup setup */
+
+		dn.cleanUpSetup = function ()
+		{
+
 		};
 
 		/* @section 1.7 destroy panel */
@@ -657,6 +672,7 @@
 			dn.calcDuplicatedID();
 			dn.calcStyleSheets();
 			dn.calcScriptGlobals();
+			dn.cleanUpSetup();
 			dn.createPanel();
 			dn.createPanelItems();
 			dn.handleScore();
