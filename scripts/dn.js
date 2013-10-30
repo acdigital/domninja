@@ -289,7 +289,8 @@
 				description: 'Style rules',
 				amountNinja: 500,
 				amountTrainee: 1000,
-				amountNovice: 1250
+				amountNovice: 1250,
+				invalid: 0
 			},
 			styleSelectors:
 			{
@@ -457,6 +458,7 @@
 
 							if (selectorText.match(/\*/g))
 							{
+								dn.setup.styleIDSelectors.elements.push(selectorText);
 								dn.setup.styleUniversalSelectors.amount++;
 							}
 
@@ -464,7 +466,7 @@
 
 							if (selectorText.match(/\#/g))
 							{
-								dn.setup.styleIDSelectors.push(j);
+								dn.setup.styleIDSelectors.elements.push(selectorText);
 								dn.setup.styleIDSelectors.amount++;
 							}
 
@@ -479,7 +481,7 @@
 
 					/* calculate style rules */
 
-					dn.setup.styleRules.elements.push(i);
+
 					dn.setup.styleRules.amount += styleSheets.cssRules.length;
 				}
 			}
@@ -503,7 +505,15 @@
 
 		dn.cleanUpSetup = function ()
 		{
-
+			if (dn.setup.styleRules.amount === 0)
+			{
+				delete dn.setup.styleRules;
+				delete dn.setup.styleSelectors;
+				delete dn.setup.styleIDSelectors;
+				delete dn.setup.styleUniversalSelectors;
+				delete dn.setup.styleImportant;
+				dn.total = dn.total - 5;
+			}
 		};
 
 		/* @section 1.7 destroy panel */
