@@ -75,7 +75,7 @@
 			{
 				elements: $('*').not(dn.elements.panel).not(dn.elements.panel.find('*')).not(dn.elements.css).not(dn.elements.js),
 				description: 'Document tags',
-				amountNinja: 1000,
+				amountNinja: 750,
 				amountTrainee: 1500,
 				amountNovice: 2500
 			},
@@ -330,7 +330,7 @@
 			},
 			styleImportant:
 			{
-				elements: '',
+				elements: [],
 				description: 'Important in declarations',
 				amountNinja: 0,
 				amountTrainee: 5,
@@ -484,15 +484,15 @@
 
 							/* calculate important style */
 
-							if (cssText.match(/important/g))
+							if (cssText.match(/!(\s?)important/g))
 							{
+								dn.setup.styleImportant.elements.push(cssText);
 								dn.setup.styleImportant.amount++;
 							}
 						}
 					}
 
 					/* calculate style rules */
-
 
 					dn.setup.styleRules.amount += styleSheets.cssRules.length;
 				}
