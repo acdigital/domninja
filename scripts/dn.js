@@ -660,11 +660,11 @@
 
 			/* handle score */
 
-			if (dn.score >= dn.total - 5)
+			if (dn.score >= (dn.total * 0.8))
 			{
 				dn.type = 'ninja';
 			}
-			else if (dn.score >= dn.total - 10)
+			else if (dn.score >= (dn.total * 0.6))
 			{
 				dn.type = 'trainee';
 			}
