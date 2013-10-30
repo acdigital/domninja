@@ -470,7 +470,7 @@
 
 							if (selectorText.match(/\*/g))
 							{
-								dn.setup.styleIDSelectors.elements.push(selectorText);
+								dn.setup.styleUniversalSelectors.elements.push(selectorText);
 								dn.setup.styleUniversalSelectors.amount++;
 							}
 
@@ -517,7 +517,7 @@
 
 		dn.cleanUpSetup = function ()
 		{
-			if (dn.setup.styleRules.amount === 0)
+			if (dn.setup.styleRules.amount < 50)
 			{
 				delete dn.setup.styleRules;
 				delete dn.setup.styleSelectors;

@@ -14,6 +14,9 @@ Audit criteria
 --------------
 
 * Document tags
+* Charset tag
+* Base tag
+* Title tag
 * Canonical URL
 * HTTP requests
 * Deprecated tags
@@ -34,12 +37,19 @@ Audit criteria
 * Tags with duplicated ID
 * Tags with nested ID
 * Deep nested tags
+* Inline style tags
 * Style tag in body
 * External style files
-* Inline style attributes
 * Third Party styles
+* Inline style attributes
+* Style rules
+* Style selectors
+* Styled ID selectors
+* Universal selectors
+* Important in declarations
+* Inline script tags
 * Script tags in head
 * External script files
+* Third Party scripts
 * Inline script attributes
 * Script globals
-* Third Party scripts
