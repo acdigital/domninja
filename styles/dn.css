@@ -97,7 +97,7 @@
 {
 	-moz-box-shadow: inset 0 -1px rgba(255, 255, 255, 0.1), inset 0 1px rgba(0, 0, 0, 0.3);
 	-webkit-box-shadow: inset 0 -1px rgba(255, 255, 255, 0.1), inset 0 1px rgba(0, 0, 0, 0.3);
-	background: #18151c;
+	background: #2c1947;
 	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
 	background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
 	background: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
@@ -108,6 +108,18 @@
 	padding: 0.75em 0.75em 0.75em 2.5em;
 	position: relative;
 	
+}
+
+/* hover effect */
+
+.dn_item_panel:hover
+{
+	background: #543088;
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+	background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+	background: -o-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+	background: linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
 }
 
 .dn_item_panel:before

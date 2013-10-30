@@ -6,15 +6,16 @@
  *    1.2 calculate conditional comments
  *    1.3 calculate display ratio
  *    1.4 calculate duplicated id
- *    1.5 calculate script globals
- *    1.6 destroy panel
- *    1.7 create panel
- *    1.8 create panel items
- *    1.9 handle score
- *    1.10 init
+ *    1.5 calculate style sheets
+ *    1.6 calculate script globals
+ *    1.7 destroy panel
+ *    1.8 create panel
+ *    1.9 create panel items
+ *    1.10 handle score
+ *    1.11 init
  */
 
-(function (win, $)
+(function (doc, win, $)
 {
 	'use strict';
 
@@ -27,7 +28,8 @@
 		/* misc */
 
 		dn.version = '2.0.0';
-		dn.host = window.location.hostname.split('.').slice(-2).join('.');
+		dn.host = win.location.hostname.split('.').slice(-2).join('.');
+		dn.duration = 1000;
 
 		/* wording */
 
@@ -183,8 +185,8 @@
 			{
 				elements: dn.body.find(':visible'),
 				description: 'Visible tags',
-				amountNinja: 650,
-				amountTrainee: 1300,
+				amountNinja: 750,
+				amountTrainee: 1500,
 				amountNovice: 2000
 			},
 			hiddenTags:
@@ -207,9 +209,9 @@
 			{
 				elements: dn.body.find('[id]'),
 				description: 'Tags with ID',
-				amountNinja: 10,
-				amountTrainee: 20,
-				amountNovice: 50
+				amountNinja: 20,
+				amountTrainee: 40,
+				amountNovice: 60
 			},
 			duplicatedIDTags:
 			{
@@ -274,6 +276,46 @@
 				amountNinja: 0,
 				amountTrainee: 10,
 				amountNovice: 20
+			},
+			styleRules:
+			{
+				elements: '',
+				description: 'Style rules',
+				amountNinja: 500,
+				amountTrainee: 1000,
+				amountNovice: 1250
+			},
+			styleSelectors:
+			{
+				elements: '',
+				description: 'Style selectors',
+				amountNinja: 750,
+				amountTrainee: 1250,
+				amountNovice: 1500
+			},
+			styleIDSelectors:
+			{
+				elements: '',
+				description: 'Styled ID selectors',
+				amountNinja: 0,
+				amountTrainee: 5,
+				amountNovice: 10
+			},
+			styleUniversalSelectors:
+			{
+				elements: '',
+				description: 'Universal selectors',
+				amountNinja: 0,
+				amountTrainee: 5,
+				amountNovice: 10
+			},
+			styleImportant:
+			{
+				elements: '',
+				description: 'Important in declarations',
+				amountNinja: 0,
+				amountTrainee: 5,
+				amountNovice: 10
 			},
 			scriptTagsInline:
 			{
@@ -383,7 +425,59 @@
 			});
 		};
 
-		/* @section 1.5 calculate script globals */
+		/* @section 1.5 calculate style sheets */
+
+		dn.calcStyleSheets = function ()
+		{
+			for (var i = 0; i < doc.styleSheets.length; i++)
+			{
+				var styleSheets = doc.styleSheets[i];
+
+				if (styleSheets && (styleSheets.href && styleSheets.href.match(win.location.hostname) || !styleSheets.href) && styleSheets.cssRules)
+				{
+					for (var j = 0; j < styleSheets.cssRules.length; j++)
+					{
+						var cssRules = styleSheets.cssRules[j],
+							selectorText = cssRules.selectorText,
+							cssText = cssRules.cssText;
+
+						if (selectorText)
+						{
+							/* calculate style selectors */
+
+							dn.setup.styleSelectors.amount += selectorText.split(',').length;
+
+							/* calculate universal selectors */
+
+							if (selectorText.match(/\*/g))
+							{
+								dn.setup.styleUniversalSelectors.amount++;
+							}
+
+							/* calculate id selectors */
+
+							if (selectorText.match(/\#/g))
+							{
+								dn.setup.styleIDSelectors.amount++;
+							}
+
+							/* calculate important style */
+
+							if (cssText.match(/important/g))
+							{
+								dn.setup.styleImportant.amount++;
+							}
+						}
+					}
+
+					/* calculate style rules */
+
+					dn.setup.styleRules.amount += styleSheets.cssRules.length;
+				}
+			}
+		};
+
+		/* @section 1.6 calculate script globals */
 
 		dn.calcScriptGlobals = function ()
 		{
@@ -397,7 +491,7 @@
 			}
 		};
 
-		/* @section 1.6 destroy panel */
+		/* @section 1.7 destroy panel */
 
 		dn.destroyPanel = function ()
 		{
@@ -405,7 +499,7 @@
 			delete win.dn;
 		};
 
-		/* @section 1.7 create panel */
+		/* @section 1.8 create panel */
 
 		dn.createPanel = function ()
 		{
@@ -422,11 +516,11 @@
 			dn.html.add(dn.body).animate(
 			{
 				scrollTop: 0
-			}, 1000);
+			}, dn.duration);
 
 			/* panel title click */
 
-			dn.panel.title.on('click', function ()
+			dn.panel.title.click(function ()
 			{
 				dn.destroyPanel();
 			});
@@ -442,7 +536,7 @@
 			});
 		};
 
-		/* @section 1.8 create panel items */
+		/* @section 1.9 create panel items */
 
 		dn.createPanelItems = function ()
 		{
@@ -514,7 +608,7 @@
 			dn.panel.list.html(output);
 		};
 
-		/* @section 1.9 handle score */
+		/* @section 1.10 handle score */
 
 		dn.handleScore = function ()
 		{
@@ -553,7 +647,7 @@
 			dn.panel.body.addClass('dn_score_' + dn.type);
 		};
 
-		/* @section 1.10 init */
+		/* @section 1.11 init */
 
 		dn.init = function ()
 		{
@@ -561,6 +655,7 @@
 			dn.calcConditionalComments();
 			dn.calcDisplayRatio();
 			dn.calcDuplicatedID();
+			dn.calcStyleSheets();
 			dn.calcScriptGlobals();
 			dn.createPanel();
 			dn.createPanelItems();
@@ -575,4 +670,4 @@
 			dn.init();
 		}
 	});
-})(window, window.jQuery);
+})(document, window, window.jQuery);
