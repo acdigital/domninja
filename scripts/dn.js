@@ -553,16 +553,9 @@
 
 			/* append panel */
 
-			dn.panel.body = $('<div class="js_dn_panel dn_panel"></div>').hide().prependTo(dn.body);
+			dn.panel.body = $('<div class="js_dn_panel dn_panel"></div>').prependTo(dn.body);
 			dn.panel.title = $('<h1 class="js_dn_title_panel dn_title_panel" title="' + dn.version + '">' + dn.wording.title + '</h1>').appendTo(dn.panel.body);
 			dn.panel.list = $('<ul class="js_dn_list_panel dn_list_panel"></ul>').appendTo(dn.panel.body);
-
-			/* prevent reflow */
-
-			dn.elements.css.on('load', function ()
-			{
-				dn.panel.body.show();
-			});
 
 			/* scroll top */
 
