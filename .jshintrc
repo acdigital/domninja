@@ -5,7 +5,7 @@
 	"eqeqeq": true,
 	"eqnull": true,
 	"latedef": true,
-	"maxdepth": 5,
+	"maxdepth": 10,
 	"maxparams": 5,
 	"maxcomplexity": 10,
 	"newcap": true,

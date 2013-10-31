@@ -29,6 +29,7 @@
 		/* misc */
 
 		dn.version = '2.0.0';
+		dn.website = 'domninja.com';
 		dn.host = win.location.hostname.split('.').slice(-2).join('.');
 		dn.duration = 1000;
 
@@ -51,11 +52,6 @@
 
 		dn.score = 0;
 		dn.total = 0;
-
-		/* flags */
-
-		dn.startup = false;
-		dn.cleanup = false;
 
 		/* cache */
 
@@ -543,7 +539,7 @@
 
 		/* @section 1.7 destroy panel */
 
-		dn.destroyPanel = function ()
+		dn.destroy = function ()
 		{
 			dn.body.find('div.js_dn_panel').add(dn.elements.css).add(dn.elements.js).remove();
 			delete win.dn;
@@ -572,7 +568,7 @@
 
 			dn.panel.title.click(function ()
 			{
-				dn.destroyPanel();
+				dn.destroy();
 			});
 
 			/* panel title hover */
@@ -701,6 +697,14 @@
 
 		dn.init = function ()
 		{
+			dn.elements.panel.hide();
+
+			/* prevent reflow */
+
+			dn.elements.css.on('load', function ()
+			{
+				dn.elements.panel.show();
+			});
 			dn.calcElementsAmount();
 			dn.calcConditionalComments();
 			dn.calcDisplayRatio();
