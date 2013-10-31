@@ -8,9 +8,10 @@
  *    1.4 calculate duplicated id
  *    1.5 calculate style sheets
  *    1.6 calculate script globals
+ *    1.6 cleanup setup
  *    1.7 destroy panel
  *    1.8 create panel
- *    1.9 create panel items
+ *    1.9 create items
  *    1.10 handle score
  *    1.11 init
  */
@@ -50,6 +51,11 @@
 
 		dn.score = 0;
 		dn.total = 0;
+
+		/* flags */
+
+		dn.startup = false;
+		dn.cleanup = false;
 
 		/* cache */
 
@@ -448,54 +454,61 @@
 
 		dn.calcStyleSheets = function ()
 		{
-			for (var i = 0; i < doc.styleSheets.length; i++)
+			try
 			{
-				var styleSheets = doc.styleSheets[i];
-
-				if (styleSheets && (styleSheets.href && styleSheets.href.match(win.location.hostname) || !styleSheets.href) && styleSheets.cssRules)
+				for (var i = 0; i < doc.styleSheets.length; i++)
 				{
-					for (var j = 0; j < styleSheets.cssRules.length; j++)
+					var styleSheets = doc.styleSheets[i];
+
+					if (styleSheets && styleSheets.cssRules)
 					{
-						var cssRules = styleSheets.cssRules[j],
-							selectorText = cssRules.selectorText,
-							cssText = cssRules.cssText;
-
-						if (selectorText)
+						for (var j = 0; j < styleSheets.cssRules.length; j++)
 						{
-							/* calculate style selectors */
+							var cssRules = styleSheets.cssRules[j],
+								selectorText = cssRules.selectorText,
+								cssText = cssRules.cssText;
 
-							dn.setup.styleSelectors.amount += selectorText.split(',').length;
-
-							/* calculate universal selectors */
-
-							if (selectorText.match(/\*/g))
+							if (selectorText)
 							{
-								dn.setup.styleUniversalSelectors.elements.push(selectorText);
-								dn.setup.styleUniversalSelectors.amount++;
-							}
+								/* calculate style selectors */
 
-							/* calculate id selectors */
+								dn.setup.styleSelectors.amount += selectorText.split(',').length;
 
-							if (selectorText.match(/\#/g))
-							{
-								dn.setup.styleIDSelectors.elements.push(selectorText);
-								dn.setup.styleIDSelectors.amount++;
-							}
+								/* calculate universal selectors */
 
-							/* calculate important style */
+								if (selectorText.match(/\*/g))
+								{
+									dn.setup.styleUniversalSelectors.elements.push(selectorText);
+									dn.setup.styleUniversalSelectors.amount++;
+								}
 
-							if (cssText.match(/!(\s?)important/g))
-							{
-								dn.setup.styleImportant.elements.push(cssText);
-								dn.setup.styleImportant.amount++;
+								/* calculate id selectors */
+
+								if (selectorText.match(/\#/g))
+								{
+									dn.setup.styleIDSelectors.elements.push(selectorText);
+									dn.setup.styleIDSelectors.amount++;
+								}
+
+								/* calculate important style */
+
+								if (cssText.match(/!(\s?)important/g))
+								{
+									dn.setup.styleImportant.elements.push(cssText);
+									dn.setup.styleImportant.amount++;
+								}
 							}
 						}
+
+						/* calculate style rules */
+
+						dn.setup.styleRules.amount += styleSheets.cssRules.length;
 					}
-
-					/* calculate style rules */
-
-					dn.setup.styleRules.amount += styleSheets.cssRules.length;
 				}
+			}
+			catch (exception)
+			{
+				dn.cleanup = true;
 			}
 		};
 
@@ -515,7 +528,7 @@
 
 		/* @section 1.6 cleanup setup */
 
-		dn.cleanUpSetup = function ()
+		dn.cleanupSetup = function ()
 		{
 			if (dn.setup.styleRules.amount < 50)
 			{
@@ -573,9 +586,9 @@
 			});
 		};
 
-		/* @section 1.9 create panel items */
+		/* @section 1.9 create items */
 
-		dn.createPanelItems = function ()
+		dn.createItems = function ()
 		{
 			var output = '';
 
@@ -694,9 +707,12 @@
 			dn.calcDuplicatedID();
 			dn.calcStyleSheets();
 			dn.calcScriptGlobals();
-			dn.cleanUpSetup();
+			if (dn.cleanup)
+			{
+				dn.cleanupSetup();
+			}
 			dn.createPanel();
-			dn.createPanelItems();
+			dn.createItems();
 			dn.handleScore();
 			dn.startup = true;
 		};
