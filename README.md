@@ -3,6 +3,8 @@ DOM Ninja
 
 > Frontend developer bookmarklet.
 
+[![Build Status](https://travis-ci.org/redaxmedia/domninja.png?branch=master)](https://travis-ci.org/redaxmedia/domninja)
+
 
 Install
 -------

@@ -1,7 +1,7 @@
 {
 	"name": "domninja",
 	"description": "Frontend developer bookmarklet",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"homepage": "http://domninja.com",
 	"licence": "GPL-3.0",
 	"author":
@@ -29,5 +29,9 @@
 		"grunt-htmlhint": "0.4.0",
 		"grunt-jsonlint": "1.0.0",
 		"grunt-shell": "0.3.1"
+	},
+	"scripts":
+	{
+		"test": "grunt --verbose"
 	}
 }

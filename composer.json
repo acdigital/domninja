@@ -1,7 +1,7 @@
 {
 	"name": "redaxmedia/domninja",
 	"description": "Frontend developer bookmarklet",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"homepage": "http://domninja.com",
 	"licence": "GPL-3.0",
 	"require":

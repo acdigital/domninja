@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+- 0.10
+- 0.9
+
+before_script:
+- npm install -g grunt-cli
+- composer self-update
+- composer install
+
+script:
+- npm test
