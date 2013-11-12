@@ -464,7 +464,7 @@
 								selectorText = cssRules.selectorText,
 								cssText = cssRules.cssText;
 
-							if (selectorText)
+							if (selectorText && selectorText.indexOf('firebug') === -1)
 							{
 								/* calculate style selectors */
 
