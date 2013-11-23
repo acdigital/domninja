@@ -59,6 +59,7 @@
 	content: attr(title);
 	font-size: 0.5em;
 	display: block;
+	margin-top: 1em;
 }
 
 /* @section 3. list panel */

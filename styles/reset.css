@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. reset
+ * 2. normalize
  */
 
 /* @section 1. reset */
@@ -13,10 +14,9 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 	outline: 0;
 	padding: 0;
 	vertical-align: baseline;
-	white-space: normal;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary
 {
 	display: block;
 }
@@ -29,7 +29,11 @@ blockquote, q
 blockquote:before, blockquote:after, q:before, q:after
 {
 	content: '';
-	content: none;
+}
+
+legend
+{
+	max-width: 100%;
 }
 
 li
@@ -41,4 +45,13 @@ table
 {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+/* @section 2. normalize */
+
+button, input, select, textarea
+{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
